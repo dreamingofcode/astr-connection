@@ -1,5 +1,32 @@
 .App {
   text-align: center;
+  background-image: url();
+}
+.login-page{
+  /* background-image: url("../src/assets/images/login.jpg"); */
+ background-position: 90px;
+ background-attachment: 	scroll;
+  margin-bottom: 0px;
+  padding-bottom: 400px;
+}
+.date-form{
+  size: 10px;
+  margin-left:12px;
+  margin-top:45px;
+}
+.login-form{
+  /* background-image: url("../src/assets/images/cosmos.jpg"); */
+  background-position-y: 0px;
+  width: 100%;
+  max-width: 330px;
+  padding: 15px;
+  /* padding-top: 100px; */
+  margin-top: 100px;
+  margin: auto;
+  height: 100%;
+ color:white;
+font-family: monospace;
+  background-color: rgb(13, 180, 180);
 }
 
 .App-logo {
