@@ -1,0 +1,2 @@
+class ZodiacMatch < ApplicationRecord
+end

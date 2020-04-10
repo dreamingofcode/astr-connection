@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  zodiac_one: MyString
+  zodiac_two: MyString
+  pro: MyString
+  con: MyString
+  maximize: MyString
+
+two:
+  zodiac_one: MyString
+  zodiac_two: MyString
+  pro: MyString
+  con: MyString
+  maximize: MyString
