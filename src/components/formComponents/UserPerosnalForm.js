@@ -12,6 +12,7 @@ class UserPersonalForm extends Component {
   continue = event => {
     event.preventDefault();
     this.props.nextStep();
+    this.props.handleZodiac()
   };
   back = event => {
     event.preventDefault();
@@ -22,16 +23,14 @@ class UserPersonalForm extends Component {
     return (
       <MuiThemeProvider>
         <div className="login-form">
-          <h1>
-            <span className="font-weight-bold">Astro-Connection</span>
-          </h1>
           <img src={logo} alt="logo" height="170px" />
+          <h1>Sign-up Form</h1>
           <div className="date-form">
-            <DateForm />
+            <DateForm handleChange={handleChange} values={values} />
           </div>
-          <GenderForm />
-          <SexualOForm />
-          <BioForm />
+          <GenderForm handleChange={handleChange} values={values} />
+          <SexualOForm handleChange={handleChange} values={values} />
+          <BioForm handleChange={handleChange} values={values} />
 
           <br />
           <RaisedButton
