@@ -16,28 +16,16 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-export default function NativeSelects() {
+export default function SexualOForm(props) {
   const classes = useStyles();
-  const [state, setState] = React.useState({
-    sexualOrientation: '',
-    
-  });
-
-  const handleChange = event => {
-    const name = event.target.name;
-    setState({
-      ...state,
-      [name]: event.target.value
-    });
-  };
-
+  
   return (
     <div>
       <FormControl className={classes.formControl}>
         <InputLabel htmlFor="sex-native-helper">Sexual Orientation</InputLabel>
         <NativeSelect
-          value={state.sexualOrientation}
-          onChange={handleChange}
+          defaultValue={props.values.sexualOrientation}
+          onChange={props.handleChange('sexualOrientation')}
           inputProps={{
             name: 'sexualOrientation',
             id: 'sex-native-helper'

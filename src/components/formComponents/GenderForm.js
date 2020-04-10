@@ -16,28 +16,16 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-export default function NativeSelects() {
+export default function GenderForm(props) {
   const classes = useStyles();
-  const [state, setState] = React.useState({
-    gender: '',
-    
-  });
-
-  const handleChange = event => {
-    const name = event.target.name;
-    setState({
-      ...state,
-      [name]: event.target.value
-    });
-  };
 
   return (
     <div>
       <FormControl className={classes.formControl}>
         <InputLabel htmlFor="gender-native-helper">Gender</InputLabel>
         <NativeSelect
-          value={state.gender}
-          onChange={handleChange}
+         defaultValue={props.values.gender}
+          onChange={props.handleChange('gender')}
           inputProps={{
             name: 'gender',
             id: 'gender-native-helper'

@@ -1,32 +1,33 @@
 import React from 'react';
 import { Nav, Navbar, Form, FormControl } from 'react-bootstrap';
 import styled from 'styled-components';
-import logo from '../assets/images/logo.png'
+import logo from '../assets/images/logo.png';
 import { connect } from 'react-redux';
 const Styles = styled.div`
   .navbar {
     background-image: url('../assets/images/cosmos.jpg');
-    background-color:grey;
+    background-color: rgb(13, 180, 180);
     height: 80px;
-  transition: all 0.5s;
-  z-index: 997;
-  transition: all 0.5s;
-  padding: 16px 0;
-  background: #213b52;
-  border-radius: 6px;
+    transition: all 0.5s;
+    z-index: 997;
+    transition: all 0.5s;
+    padding: 16px 0;
+    // margin-top: -40px;
+
+    // border-radius: 6px;
   }
-  
+
   .navbar-nav,
   .navbar-light .nav-link {
     color: #9fffcb;
     &:hover {
       color: white;
     }
-    font-size:1.2em;
+    font-size: 1.2em;
   }
   .navbar-brand {
     font-size: 3em;
-    font-family:monospace;
+    font-family: monospace;
     color: white;
     &:hover {
       color: white;
@@ -34,8 +35,8 @@ const Styles = styled.div`
   }
   .form-center {
     position: absolute !important;
-    left: 47%;
-    right: 17%;
+    left: 37%;
+    right: 30%;
   }
 `;
 
@@ -48,33 +49,38 @@ class NavigationBar extends React.Component {
     return (
       <Styles>
         <Navbar className="navbar" expand="lg">
-          <img src={logo} circle className="logo" height="90px"/>
-          <Navbar.Brand href="/">
-           ASTRO-CONNECTION
-          </Navbar.Brand>
+          <img src={logo} circle className="logo" height="70px" />
+          <Navbar.Brand href="/">ASTRO-CONNECTION</Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Form className="form-center">
-        <FormControl type="text" placeholder="Search" className="" />
-      </Form>
+            <FormControl type="text" placeholder="Search" className="" />
+          </Form>
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="ml-auto">
+              {this.props.userData? (
+              <Nav.Item>
+                  <Nav.Link href="/user-page" >
+                    My Dashboard
+                  </Nav.Link>
+                </Nav.Item>
+              ):(console.log())}
               <Nav.Item>
                 <Nav.Link href="/">Home</Nav.Link>
               </Nav.Item>
               <Nav.Item>
                 <Nav.Link href="/about">About</Nav.Link>
               </Nav.Item>
-              {/* {this.props.auth || this.props.clientAuth ? ( */}
-                {/* <Nav.Item>
+              {this.props.userData ? (
+                <Nav.Item>
                   <Nav.Link href="/" onClick={this.handleLogOut}>
                     Logout
                   </Nav.Link>
                 </Nav.Item>
-              ) : ( */}
+              ) : (
                 <Nav.Item>
                   <Nav.Link href="/login">Login</Nav.Link>
                 </Nav.Item>
-            
+              )}
             </Nav>
           </Navbar.Collapse>
         </Navbar>
@@ -84,8 +90,7 @@ class NavigationBar extends React.Component {
 }
 const mapStateToProps = state => {
   return {
-    auth: state.auth,
-    clientAuth: state.clientAuth
+    userData: state.userData
   };
 };
 const mapDispatchToProps = dispatch => {

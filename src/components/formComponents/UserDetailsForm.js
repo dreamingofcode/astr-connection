@@ -17,11 +17,12 @@ class UserDetailsForm extends Component {
       <MuiThemeProvider>
         <React.Fragment>
           <div className="login-form">
-            <h1>
+            {/* <h1>
               <span className="font-weight-bold">Astro-Connection</span>
             </h1>
+            <img src={logo} alt="logo" height="170px" /> */}
             <img src={logo} alt="logo" height="170px" />
-
+ <h1>Sign-up Form</h1>
             <TextField
               hintText="Enter your Full Name"
               floatingLabelText="Full name"
@@ -46,8 +47,8 @@ class UserDetailsForm extends Component {
             <TextField
               hintText="Confirm Password"
               floatingLabelText="Confirm Password"
-              onChange={handleChange('password')}
-              defaultValue={values.password}
+              onChange={handleChange('password_confirmation')}
+              defaultValue={values.password_confirmation}
             />
             <br />
             <RaisedButton

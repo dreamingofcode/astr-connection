@@ -11,13 +11,8 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-export default function MultilineTextFields() {
+export default function BioForm(props) {
   const classes = useStyles();
-  const [value, setValue] = React.useState('Controlled');
-
-  const handleChange = event => {
-    setValue(event.target.value);
-  };
 
   return (
     <form className={classes.root} noValidate autoComplete="off">
@@ -26,7 +21,8 @@ export default function MultilineTextFields() {
         label="Short Bio"
         multiline
         rows="4"
-        defaultValue=""
+        defaultValue={props.values.bio}
+        onChange={props.handleChange('bio')}
         variant="outlined"
       />
     </form>
