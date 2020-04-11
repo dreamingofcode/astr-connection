@@ -65,7 +65,7 @@ console.log("fuck you", newUserData)
     const token = localStorage.token;
     return (
       <MuiThemeProvider>
-        <React.Fragment>
+        <div className="login-form">
           <img src={logo} alt="logo" height="170px" />
           {token ? (
             <h1>Your Account Was Successfully UPDATED!</h1>
@@ -81,7 +81,7 @@ console.log("fuck you", newUserData)
           />
 
           <div className="user-form"></div>
-        </React.Fragment>
+        </div >
       </MuiThemeProvider>
     );
   }

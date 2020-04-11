@@ -14,7 +14,8 @@ import logo from './assets/images/logo.png';
 import {getProfileFetch} from './reducers/actions/currentUser'
 import loveCalculator from './Pages/loveCalculator';
 import horoscopeMatchPage from './Pages/horoscopeMatchPage'
-
+import JoinChat from './components/chatComponents/joinChat'
+import Chat from './components/chatComponents/chat'
 
 class App extends Component {
   componentWillMount() {
@@ -39,6 +40,8 @@ class App extends Component {
             <Route path="/horoscope-discover-page" component={horoscopeDiscover} />
             <Route path="/love-calulator" component={loveCalculator} />
             <Route path="/horoscope-match-page" component={horoscopeMatchPage} />
+            <Route path="/join-chat" component={JoinChat} />
+            <Route path="/chat" component={Chat} />
             <header className="App-header">
               <h1>hello,world!</h1>
             </header>
