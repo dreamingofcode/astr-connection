@@ -47,9 +47,9 @@ class UserConfirmForm extends Component {
     return (
       <MuiThemeProvider>
         <React.Fragment>
+          <div className="login-form">
           <img src={logo} alt="logo" height="170px" />
-          <h1>Confirm User Data</h1>
-          <div className="user-form">
+          <h1>Confirm User Data!!!</h1>
             <List>
               <ListItem primaryText="Name" secondaryText={name} />
               <ListItem primaryText="Email" secondaryText={email} />

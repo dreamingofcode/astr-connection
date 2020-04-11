@@ -52,24 +52,24 @@ class NavigationBar extends React.Component {
           <img src={logo} circle className="logo" height="70px" />
           <Navbar.Brand href="/">ASTRO-CONNECTION</Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
-          <Form className="form-center">
+          {/* <Form className="form-center">
             <FormControl type="text" placeholder="Search" className="" />
-          </Form>
+          </Form> */}
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="ml-auto">
+              <Nav.Item>
+                <Nav.Link href="/">Home</Nav.Link>
+              </Nav.Item>
+              <Nav.Item>
+                <Nav.Link href="/join-chat">Connect!</Nav.Link>
+              </Nav.Item>
               {this.props.userData? (
               <Nav.Item>
                   <Nav.Link href="/user-page" >
                     My Dashboard
                   </Nav.Link>
                 </Nav.Item>
-              ):(console.log())}
-              <Nav.Item>
-                <Nav.Link href="/">Home</Nav.Link>
-              </Nav.Item>
-              <Nav.Item>
-                <Nav.Link href="/about">About</Nav.Link>
-              </Nav.Item>
+              ):null}
               {this.props.userData ? (
                 <Nav.Item>
                   <Nav.Link href="/" onClick={this.handleLogOut}>
