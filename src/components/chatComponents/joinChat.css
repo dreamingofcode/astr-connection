@@ -28,6 +28,7 @@ body {
 .joinInnerContainer {
   width: 30%;
   height: 75%;
+  color: white;
   margin-top: -160px;
   background-image: url('../../assets/images/lovematch.jpeg');
 }

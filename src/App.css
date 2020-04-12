@@ -332,3 +332,10 @@ body{
     transform: rotate(360deg);
   }
 }
+.users-Card{
+  color:black;
+  background-color: cadetblue;
+  height: 600px;
+  width: 0px;
+border: darkblue solid;
+}

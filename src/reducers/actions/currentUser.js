@@ -11,6 +11,14 @@ export const getProfileFetch = () => {
         dispatch(horoscopeMatch(data[0]));
       });
     };
+    if(token || !token){
+      fetch(`http://localhost:3000/api/v1/users`)
+      .then((resp) => resp.json())
+      .then((data) => {
+     
+        dispatch(fetchUsers(data));
+      });
+    };
     if (token) {
       return fetch('http://localhost:3000/api/v1/current_user', {
         method: 'GET',
@@ -32,6 +40,10 @@ export const getProfileFetch = () => {
         });
     }
 };}
+const fetchUsers=(data)=>({
+  type: "FETCH_USERS",
+  payload: data
+})
 const horoscopeMatch=(data)=>({
   type: 'HOROSCOPE_MATCH',
   payload: data

@@ -10,6 +10,10 @@ import zodiacData from './zodiac/zodiacData'
 import selectedZodiac from './zodiac/selectedZodiac'
 import selectedZoLoading from './zodiac/selectedZoLoading'
 import horoscopeMatch from '../reducers/zodiac/horoscopeMatch'
+import currentChatRoom from './chat/currentChat'
+import currentChatUser from './chat/currentChatUser'
+import users from './chat/users'
+import usersLoading from './chat/usersLoading'
 const allReducers= combineReducers({
    newUserData: newUserData,
    userAuth: userAuth,
@@ -20,6 +24,10 @@ const allReducers= combineReducers({
    selectedZodiac:selectedZodiac,
    horoscopeMatch:horoscopeMatch,
    isLoading: isLoading,
+   currentChatRoom:currentChatRoom,
+   currentChatUser:currentChatUser,
+   users:users,
+   usersLoading: usersLoading,
    // selectedZoLoading:selectedZoLoading
 })
 export default allReducers

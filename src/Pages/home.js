@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 import dailyReadingCard from '../assets/images/lovematch4.jpeg';
 import loveCalCard from '../assets/images/lovematch3.jpg';
 import datingCard from '../assets/images/lovematch.jpeg';
-
+import DatingCards from '../containers/datingCards'
 
 const Styles = styled.div`
   .my-col {
@@ -79,6 +79,7 @@ class Home extends React.Component {
             <Link className="Link" to="/login"><Button>Meet Local Singles!</Button></Link>
           </div>
         </div>
+        <DatingCards/>
       </Styles>
     );
   }

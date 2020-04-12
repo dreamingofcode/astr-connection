@@ -74,7 +74,7 @@ const styles = {
     margin: -20
   }
 };
-const token = localStorage.getItem('token');
+
 
 const mapStateToProps = state => {
   return { userData: state.userData };
