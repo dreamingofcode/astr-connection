@@ -14,7 +14,7 @@ const { addUser, removeUser, getUser, getUsersInRoom } = require('./users');
 const router = require('./router');
 
 
-// app.use(cors());
+app.use(cors());
 app.use(router);
 
 io.on('connect', (socket) => {
