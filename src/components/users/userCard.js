@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
 import { FacebookLoginButton } from 'react-social-login-buttons';
 import malePic from '../../icons/maleIcon.jpeg';
@@ -15,13 +16,26 @@ const UserCard = ({ user }) => {
   const currentChatRoom = useSelector((state) => state.currentChatRoom);
   const currentChatUser = useSelector((state) => state.currentChatUser);
   const userData = useSelector((state) => state.userData);
+  const currentlyViewing = useSelector((state) => state.currentlyViewing)
   return (
     <React.Fragment>
       <h1>{user.name}</h1>
       {user.gender === 'male' ? (
-        <img src={malePic} alt="user image" height="200px" />
+      <Link
+        onMouseOverCapture={() => {dispatch({ type: 'CURRENTLY_VIEWING_ACCOUNT', payload: user })}}
+        onClick={(e) => (!currentlyViewing ? e.preventDefault() :null)}
+        to={`/currently-viewing/${currentlyViewing.id}`}
+        >
+         <img src={malePic} alt="user image" height="200px" />
+          </Link> 
       ) : (
-        <img src={femalePic} alt="user image" height="200px" />
+         <Link
+        onMouseOverCapture={() => {dispatch({ type: 'CURRENTLY_VIEWING_ACCOUNT', payload: user })}}
+        onClick={(e) => (!currentlyViewing ? e.preventDefault() : null)}
+        to={`/currently-viewing`}
+        >
+      <img src={femalePic} alt="user image" height="200px" />
+        </Link>
       )}
       <br />
       {token ? (
@@ -41,7 +55,8 @@ const UserCard = ({ user }) => {
         >
           <img src={messageIcon} alt="message icon" height="40px" />
         </Link>
-        <Link>
+        <Link
+        to={'/login'}>
       <a href="/">
         <img src={addIcon} alt="add account icon" height="30px" />
       </a>
@@ -58,4 +73,4 @@ const UserCard = ({ user }) => {
     </React.Fragment>
   );
 };
-export default UserCard;
+export default withRouter(UserCard);

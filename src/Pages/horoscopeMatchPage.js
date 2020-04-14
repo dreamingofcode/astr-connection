@@ -39,6 +39,9 @@ class horoscopeMatchPage extends React.Component {
         <button name="cons" onClick={this.handleTabChange}>The Cons</button>
         <button name="max" onClick={this.handleTabChange}>How to Balance</button>
         </div>
+        {!this.state.tab? 
+        <h1>Welcome to Your Horoascope Match Reading, Select Tabs to read!</h1>:null
+      }
         {this.state.tab==="general"?<div>
         <h2>
           {horoscope_one} & {horoscope_two} love Compatibility
