@@ -7,6 +7,8 @@ import UserDetailsForm from '../components/formComponents/UserDetailsForm';
 import UserPersonalForm from '../components/formComponents/UserPerosnalForm';
 import UserConfirmForm from '../components/formComponents/UserConfirmForm';
 import SuccessForm from '../components/formComponents/SuccessForm';
+import UserAccountDetails from '../components/formComponents/UserAccountDetails';
+
 class SignUpForm extends Component {
   state = {
     step: 1,
@@ -19,7 +21,8 @@ class SignUpForm extends Component {
     sexualOrientation: '',
     zodiac: '',
     password_confirmation: '',
-    age:18
+    age:18,
+    // img: ""
   };
 
   componentDidMount() {
@@ -39,11 +42,13 @@ class SignUpForm extends Component {
           birthDate: userData.birthDate,
           gender: userData.gender,
           sexualOrientation: userData.sexualOrientation,
+          //img needs import to edit
         });
-        // console.log("ppppooop",this.state)
+      
       }
     }
   }
+  ////function to determine your age and make sure your older than 18
   handleAge=()=>{
     const birthYear= this.state.birthDate.split("/")
   }
@@ -150,12 +155,13 @@ class SignUpForm extends Component {
     });
   };
   handleChange = (input) => (event) => {
+    
     this.setState({
       [input]: event.target.value,
     });
+    // console.log("image",this.state.img)
   };
   render() {
-    // console.log("ppppooop",this.state)// causes two rerenders mmmh
     const {
       step,
       name,
@@ -166,6 +172,7 @@ class SignUpForm extends Component {
       birthDate,
       gender,
       sexualOrientation,
+      // img
     } = this.state;
     const values = {
       name,
@@ -176,6 +183,7 @@ class SignUpForm extends Component {
       birthDate,
       gender,
       sexualOrientation,
+      // img
     };
     switch (step) {
       case 1:
@@ -198,15 +206,25 @@ class SignUpForm extends Component {
         );
       case 3:
         return (
-          <UserConfirmForm
+          <UserAccountDetails
             nextStep={this.nextStep}
             prevStep={this.prevStep}
+            handleChange={this.handleChange}
             values={values}
             state={this.state}
           />
         );
 
       case 4:
+         return (
+          <UserConfirmForm
+            nextStep={this.nextStep}
+            prevStep={this.prevStep}
+            values={values}
+            state={this.state}
+          />
+        ); 
+        case 5:
         return <SuccessForm state={this.state} />;
     }
   }

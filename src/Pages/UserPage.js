@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import UserPgDailyReading from '../components/accountComponents/UserPgDailyReading';
 import { withRouter } from 'react-router-dom';
-class UserPage extends Component {
+class currentlyViewing extends Component {
   componentDidMount() {
     const token = localStorage.getItem('token');
     if (!token) {
@@ -18,7 +18,8 @@ class UserPage extends Component {
         .then(resp => resp.json())
         .then(data => {
           this.props.fetchUserData(data);
-        });
+        })
+        .catch(err => console.log(err))
     }
   }
 
@@ -53,5 +54,5 @@ const mapDispatchToProps = dispatch => {
   };
 };
 export default withRouter(
-  connect(mapStateToProps, mapDispatchToProps)(UserPage)
+  connect(mapStateToProps, mapDispatchToProps)(currentlyViewing)
 );

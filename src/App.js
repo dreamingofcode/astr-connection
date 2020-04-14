@@ -16,6 +16,7 @@ import loveCalculator from './Pages/loveCalculator';
 import horoscopeMatchPage from './Pages/horoscopeMatchPage'
 import JoinChat from './components/chatComponents/joinChat'
 import Chat from './components/chatComponents/chat'
+import currentlyViewing from './components/users/currentlyViewing'
 
 class App extends Component {
   componentWillMount() {
@@ -27,9 +28,11 @@ class App extends Component {
         <Router>
           <NavBar />
           <Jumbo className="jumbo" fluid>
+            <div className="my-h1">
             <img src={logo} circle className="logo1" height="150px" />
-            <h1>Astro-Connection</h1>
-            <h4>HOROSCOPE * LOVE * FRIENDS</h4>
+            <h1 className="my-h2">Astro-Connection</h1>
+            <h4 className="my-h2">HOROSCOPE * LOVE * FRIENDS</h4>
+            </div>
           </Jumbo>
           <Switch>
             <Route exact path="/" component={Home} />
@@ -42,6 +45,9 @@ class App extends Component {
             <Route path="/horoscope-match-page" component={horoscopeMatchPage} />
             <Route path="/join-chat" component={JoinChat} />
             <Route path="/chat" component={Chat} />
+            {/* <Route path="/currently-viewing" component={currentlyViewing} /> */}
+            <Route path="/currently-viewing/:id" component={currentlyViewing} />
+
             <header className="App-header">
               <h1>hello,world!</h1>
             </header>

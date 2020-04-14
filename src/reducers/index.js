@@ -14,6 +14,7 @@ import currentChatRoom from './chat/currentChat'
 import currentChatUser from './chat/currentChatUser'
 import users from './chat/users'
 import usersLoading from './chat/usersLoading'
+import currentlyViewing from './accounts/currentlyViewing'
 const allReducers= combineReducers({
    newUserData: newUserData,
    userAuth: userAuth,
@@ -28,6 +29,7 @@ const allReducers= combineReducers({
    currentChatUser:currentChatUser,
    users:users,
    usersLoading: usersLoading,
+   currentlyViewing:currentlyViewing
    // selectedZoLoading:selectedZoLoading
 })
 export default allReducers

@@ -32,9 +32,9 @@ const ZodiacCard = ({ property }) => {
       <div className="details">
         {/* <img src={ ElPicture} height="50px" width="50px"></img> */}
         <section>
-        <p>
+        <h4>
           {dateRange}
-        </p>
+        </h4>
         </section>
         <p> </p>
       </div>

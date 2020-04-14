@@ -71,12 +71,12 @@ class loveCalculator extends React.Component {
     return (
       <div className="container">
         <MuiThemeProvider>
-          <div className="row">
-            <div className="col-12">
+          <div className="row my-container">
+            <div className="col-12 ">
               <h1>Please Select Your Horosocope!</h1>
-              <br />
-              <br />
-              <br />
+  
+         
+      
 
               <ZodiacSlider
                 zodiacProperties={zodiacProperties}
@@ -89,15 +89,22 @@ class loveCalculator extends React.Component {
               />
             </div>
           </div>
-          <div className="row my-row1 horoscopeMatch">
-            <div className="col">
+                <RaisedButton
+                  label="Continue to Get Reading!"
+                  primary={true}
+                  style={styles.button1}
+                  onClick={this.getReading}
+                > <h2>Continue to Get Reading!</h2></RaisedButton>
+              </MuiThemeProvider>
+          <div className="row my-row1 my-container">
+            <div className="col my-col2 left">
               <h1>
                 {property.sign.charAt(0).toUpperCase() + property.sign.slice(1)}
               </h1>
               <img src={property.ElPicture} width="100px" height="100px" />
             </div>
             <h1>+</h1>
-            <div className="col">
+            <div className="col my-col2 right">
               <h1>
                 {property2.sign.charAt(0).toUpperCase() +
                   property2.sign.slice(1)}
@@ -106,13 +113,6 @@ class loveCalculator extends React.Component {
             </div>
             <br />
           </div>
-          <RaisedButton
-            label="Continue to Get Reading!"
-            primary={true}
-            style={styles.button1}
-            onClick={this.getReading}
-          />
-        </MuiThemeProvider>
       </div>
     );
   }

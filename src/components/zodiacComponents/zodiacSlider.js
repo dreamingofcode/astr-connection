@@ -14,13 +14,13 @@ class zodiacSlider extends React.Component {
       nextProperty,
       prevProperty,
       prevProperty2,
-      nextProperty2
+      nextProperty2,
     } = this.props;
 
     return (
       <div className="container my-container">
         <MuiThemeProvider>
-          <div className="slider1">
+          <div className="slider1 ">
             <RaisedButton
               label=" Next"
               primary={true}
@@ -36,52 +36,55 @@ class zodiacSlider extends React.Component {
               disabled={property.index === 0}
             />
 
-            <div className="row">
+            <div className="row my-roww">
               <div className="col">
                 <div className={`cards-slider active-slide-${property.index}`}>
                   <div
                     className="cards-slider-wrapper"
                     style={{
-                      transform: `translateX(-${property.index *
-                        (100 / zodiacProperties.length)}%)`
+                      transform: `translateX(-${
+                        property.index * (100 / zodiacProperties.length)
+                      }%)`,
                     }}
                   >
-                    {zodiacProperties.map(property => (
+                    {zodiacProperties.map((property) => (
                       <ZodiacCard key={property.sign} property={property} />
                     ))}
                   </div>
                 </div>
               </div>
             </div>
-            <div className="slider2 my-row1">
-              <h1>Please Select Partner's Horosocope!</h1>
+            <b/>
+            <br/>
+            <h1 >Please Select Partner's Horosocope!</h1>
 
-              <RaisedButton
-                label=" Next"
-                primary={true}
-                style={styles.button}
-                onClick={() => nextProperty2()}
-                disabled={property2.index === 11}
-              />
-              <RaisedButton
-                label="Prev"
-                primary={true}
-                style={styles.button}
-                onClick={() => prevProperty2()}
-                disabled={property2.index === 0}
-              />
-
-              <div className="row "></div>
+            <RaisedButton
+              label=" Next"
+              primary={true}
+              style={styles.button}
+              onClick={() => nextProperty2()}
+              disabled={property2.index === 11}
+            />
+            <RaisedButton
+              label="Prev"
+              primary={true}
+              style={styles.button}
+              onClick={() => prevProperty2()}
+              disabled={property2.index === 0}
+            />
+            <div className="row my-roww">
+            
               <div className="col">
                 <div className={`cards-slider active-slide-${property2.index}`}>
                   <div
                     className="cards-slider-wrapper"
                     style={{
-                      transform: `translateX(-${property2.index *
-                        (100 / zodiacProperties.length)}%)`
+                      transform: `translateX(-${
+                        property2.index * (100 / zodiacProperties.length)
+                      }%)`,
                     }}
                   >
-                    {zodiacProperties.map(property => (
+                    {zodiacProperties.map((property) => (
                       <ZodiacCard key={property.sign} property={property} />
                     ))}
                   </div>
@@ -96,23 +99,23 @@ class zodiacSlider extends React.Component {
 }
 const styles = {
   button: {
-    margin: 15
-  }
+    margin: 15,
+  },
 };
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return {
-    selectedZodiac: state.selectedZodiac
+    selectedZodiac: state.selectedZodiac,
   };
 };
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch) => {
   return {
-    selectedZodiac: zodiac => {
+    selectedZodiac: (zodiac) => {
       const action = {
         type: 'SELECTED_ZODIAC',
-        selectedZodiac: zodiac
+        selectedZodiac: zodiac,
       };
       dispatch(action);
-    }
+    },
   };
 };
 export default connect(mapStateToProps, mapDispatchToProps)(zodiacSlider);
