@@ -7,14 +7,14 @@ import accountImg from '../../icons/acount1.png';
 import messageIcon from '../../icons/messageIcon.png';
 import blockIcon from '../../icons/block.png';
 import heartIcon from '../../icons/love.png';
-import ratingIcon from '../../icons/rating.jpg';
+import ratingIcon from '../../assets/images/zodiacs/rating.jpg';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import { useSelector, useDispatch } from 'react-redux';
 import { List, ListItem } from 'material-ui/List';
-import { ListItemIcon } from '@material-ui/core';
 import RaisedButton from 'material-ui/RaisedButton';
 import UserZDescription from './userZDescription';
 import error from '../../icons/error.jpg';
+
 const UserPage = (props) => {
   const dispatch = useDispatch();
   const currentChatRoom = useSelector((state) => state.currentChatRoom);
@@ -25,17 +25,18 @@ const UserPage = (props) => {
   const selectedZodiac = useSelector((state) => state.selectedZodiac);
   const Users = useSelector((state) => state.users);
   const token = localStorage.getItem('token');
+  const horoscopeMatch = useSelector((state) => state.horoscopeMatch);
 
   const currentUserID = props.match.params.id;
-  if(!isLoading){
-    if(currentlyViewing){
-  const usersName= currentlyViewing.name[0].toUpperCase()+currentlyViewing.name.slice(1)
-  console.log("mm",usersName) 
-}
-
-}
-
   if (!isLoading) {
+    if (currentlyViewing) {
+      const usersName =
+        currentlyViewing.name[0].toUpperCase() + currentlyViewing.name.slice(1);
+      console.log('mm', usersName);
+    }
+  }
+
+  if (!isLoading && Users) {
     const currentUser = Users.filter((user) => {
       return user.id == currentUserID;
     });
@@ -183,46 +184,19 @@ const UserPage = (props) => {
               <label>{currentlyViewing.zodiac} is most Compatible with:</label>
               <h1> {selectedZodiac.Compatibility}</h1>
               <div className="buttons">
-                <RaisedButton
-                  label={
-                    <img
-                      src={messageIcon}
-                      alt="Instant Message User"
-                      height="43x"
-                    />
-                  }
-                  primary={true}
-                  style={styles.button}
-                />
-                <RaisedButton
-                  label={
-                    <img src={accountImg} alt="Add to Friends" height="30px" />
-                  }
-                  primary={true}
-                  style={styles.button}
-                />
-                <RaisedButton
-                  label={
-                    <img src={blockIcon} alt="Block this User" height="30px" />
-                  }
-                  primary={true}
-                  style={styles.button}
-                />
-                <RaisedButton
-                  label={
-                    <img
-                      src={heartIcon}
-                      alt="Read Compatibility"
-                      height="36px"
-                    />
-                  }
-                  primary={true}
-                  style={styles.button}
-                />
+                <Link onClick={console.log('Bitch')}
+                to={'/horoscope-match-page'}>
+                  <RaisedButton
+                    label={'READ Your Compatibility Report!'}
+                   
+                    primary={true}
+                    style={styles.button}
+                  />
+                </Link>
               </div>
             </div>
           </div>
-          <UserZDescription />
+          {isLoading ? null : <UserZDescription />}
         </div>
       )}
     </MuiThemeProvider>

@@ -19,6 +19,7 @@ app.use(router);
 
 io.on('connect', (socket) => {
   socket.on('join', ({ name, room }, callback) => {
+    if(room){
     const { error, user } = addUser({ id: socket.id, name, room });
 
     if(error) return callback(error);
@@ -27,18 +28,18 @@ io.on('connect', (socket) => {
 
     socket.emit('message', { user: 'admin', text: `${user.name}, welcome to room ${user.room}.`});// lets everyone else in the room k now the user has joined
     socket.broadcast.to(user.room).emit('message', { user: 'admin', text: `${user.name} has joined!` });//user added to room
-  console.log('pizza')
+
     //logic to see what users are in the room,send to room, emit name room data, pass in room (user.room),
   io.to(user.room).emit('roomData', { room: user.room, users: getUsersInRoom(user.room) });//users are pulled through the fucntion get users
 
-    callback();
+    callback();}
   });
 //event for user genrated
   socket.on('sendMessage', (message, callback) => {//when user leaves send a new messge to room , resend updated users to room
     const user = getUser(socket.id);
 
     io.to(user.room).emit('message', { user: user.name, text: message });
-
+    // handleMessageCreate()
     callback();
   });
 

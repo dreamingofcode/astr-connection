@@ -6,7 +6,7 @@ import dailyReadingCard from '../assets/images/lovematch4.jpeg';
 import loveCalCard from '../assets/images/lovematch3.jpg';
 import datingCard from '../assets/images/lovematch.jpeg';
 import DatingCards from '../containers/datingCards';
-import Filter from '../components/users/Filter';
+import Filter from '../components/otherUsers/Filter';
 import Footer from '../containers/footer'
 const Styles = styled.div`
   .my-col {
@@ -17,6 +17,9 @@ const Styles = styled.div`
   }
 `;
 class Home extends React.Component {
+  createChatRoom=()=>{
+    
+  }
   render() {
     return (
       <Styles>
@@ -100,11 +103,11 @@ class Home extends React.Component {
         <Jumbo className="jumbo2">
           <div className="filter">
           <h1 className="my-h1">Users Near You!</h1>
-            <Filter />
+            {/* <Filter /> */}
           </div>
-        </Jumbo>
         <DatingCards />
-        <Footer/>
+        </Jumbo>
+        {/* <Footer/> */}
       </Styles>
     );
   }

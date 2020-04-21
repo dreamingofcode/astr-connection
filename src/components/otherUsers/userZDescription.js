@@ -13,7 +13,7 @@ const UserZDescription = () => {
   const selectedZodiac = useSelector((state) => state.selectedZodiac);
   const userData = useSelector((state) => state.userData);
   const currentlyViewing = useSelector((state) => state.currentlyViewing);
-
+if(currentlyViewing){
   const userZodiac= currentlyViewing.zodiac
  const currentlyViewingZodiac = zodiacData.properties.filter(zodiac=>{
   const uppercasedZodiac =zodiac.sign[0].toUpperCase()+zodiac.sign.slice(1) 
@@ -25,7 +25,8 @@ const UserZDescription = () => {
 });
 
 console.log("zoddy",currentlyViewingZodiac[0])
-  return (
+}  
+return (
     <React.Fragment>
       {isLoading ? (
         <h1>Is Loading...</h1>

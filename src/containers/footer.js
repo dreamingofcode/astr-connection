@@ -2,7 +2,7 @@
 import React, { Component } from 'react'
 // import contact from '../Components/public/image/contactlogo.png';
 // import mailme from '../Components/public/image/mailmeimg.png';
-import styles from '../components/users/styles.module.css'
+import styles from '../components/otherUsers/styles.module.css'
 
 class Footer extends Component {
     render() {

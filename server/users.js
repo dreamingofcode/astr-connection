@@ -3,6 +3,8 @@
 const users = [];
 
 const addUser = ({ id, name, room }) => {
+  console.log("hhhi",name,room)
+  if(room){//allows for the room to be assigned before it is rendered
   name = name.trim().toLowerCase();
   room = room.trim().toLowerCase();
 
@@ -16,7 +18,7 @@ const addUser = ({ id, name, room }) => {
   users.push(user);
 
   return { user };
-}
+}}
 
 const removeUser = (id) => {
   const index = users.findIndex((user) => user.id === id);

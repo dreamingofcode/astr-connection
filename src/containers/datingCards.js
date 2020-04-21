@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 // import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
 // import { FacebookLoginButton } from 'react-social-login-buttons';
 
-import UserCard from '../components/users/userCard';
+import UserCard from '../components/otherUsers/userCard';
 
 const DatingCards = () => {
   const [name, setName] = useState('');
