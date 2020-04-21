@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import UserPgDailyReading from '../components/accountComponents/UserPgDailyReading';
 import { withRouter } from 'react-router-dom';
+import MessageBoard from '../components/accountComponents/MessageBoard'
 class currentlyViewing extends Component {
   componentDidMount() {
     const token = localStorage.getItem('token');
@@ -29,9 +30,10 @@ class currentlyViewing extends Component {
       this.props.history.push('/login');
     }
     return (
-      <React.Fragment>
+      <div className="my-container">
         {this.props.isLoading ? <h1>IS LOADING</h1> : <UserPgDailyReading />}
-      </React.Fragment>
+        {this.props.isLoading ? <h1>IS LOADING</h1> : <MessageBoard />}
+      </div>
     );
   }
 }

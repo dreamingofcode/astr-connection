@@ -56,7 +56,7 @@ class horoscopeDiscover extends React.Component {
     } = property;
 
     return (
-      <div className="container my-container ">
+      <div className=" my-container ">
       <MuiThemeProvider>
         <div className="my-container ">
           <RaisedButton
@@ -73,6 +73,7 @@ class horoscopeDiscover extends React.Component {
             onClick={() => this.prevProperty()}
             disabled={property.index === 0}
           />
+<div className="container">
           <div className="row my-roww  my-container">
             <div className="col">
               <div className={`cards-slider active-slide-${property.index}`}>
@@ -91,14 +92,15 @@ class horoscopeDiscover extends React.Component {
               </div>
             </div>
           </div>
-          <div className="row my-roww my-container">
+          </div>
+          <div className="row zodiac-des my-container">
             <div className="col-4 my-col">
               <h1 className="title">
                 {sign.charAt(0).toUpperCase() + sign.slice(1)}
               </h1>
-              <img src={picture} height="200px" width="200px" />
+              <img className="round-img" src={picture} height="200px" width="200px" />
               <br />
-              <img src={ElPicture} alt="element" height="90px" width="90px" />
+              <img  className="round-img" src={ElPicture} alt="element" height="90px" width="90px" />
               <h3>Quality:{Quality}</h3>
               <br />
               <h3>Color:{Color}</h3>
@@ -107,7 +109,7 @@ class horoscopeDiscover extends React.Component {
               <br />
               <h3>Ruler:{Ruler}</h3>
               <br />
-              <img src={PlanetPic} alt="planet" height="150px" width="150px" />
+              <img className="round-img" src={PlanetPic} alt="planet" height="150px" width="150px" />
               <h3>Lucky Numbers:{luckyNumbers}</h3>
               <br />
               <h3>Compatibility:{Compatibility}</h3>

@@ -22,7 +22,7 @@
   color: white;
   font-family: monospace;
   margin-top: 00px;
-  height: 700px;
+  height: 1700px;
 }
 .filter{
   margin-top: 0px;
@@ -108,7 +108,59 @@ margin-left: 270px;
   overflow-x: auto;
   display: inline-block;
 }
+.message-board{
+  border: rgb(99, 87, 87) solid 10px;
+  background-color: rgb(235, 228, 228);
+  padding: 15px;
+  margin-left: 50px;
+  margin-right: -30px;
+  margin-top: 20px;
+  overflow-y: hidden;
+  overflow-x: hidden;
+  display: inline-block;
+  height: 630px;
+  
+}
+.chatrooms-board{
+  border: rgb(99, 87, 87) solid 10px;
+  background-color: rgb(235, 228, 228);
+  padding: 15px;
+  margin-left: 20px;
+  margin-right: -0px;
+  margin-top: 70px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  display: inline-block;
+  height: 430px;
+}
+.chatrooms-board-header{
+  color: black;
+  background-color: rgb(167, 187, 187);
+  width:280px;
+  height: 50px;
+  margin-left: 0px;
+  border:black solid 5px;
+}
 
+.chat-box{
+  
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background: #FFFFFF;
+    border-radius: 8px;
+    height: 70%;
+    width: 700px;
+    margin-left:90px ;
+    margin-bottom: 40px;
+    margin-top: -100px;
+  
+}
+.outerContainer{
+  margin-top: 100px;
+
+
+}
 .my-col3{
   border: rgb(99, 87, 87) solid 10px;
   background-color: rgb(235, 228, 228);
@@ -169,7 +221,9 @@ display: inline-flex;
 
 .my-container {
   margin-top: -45px;
+  /* width: 100%; */
   background-color: rgb(106, 206, 206);
+ 
 }
 .my-row{
   margin-top:-32px;
@@ -177,16 +231,25 @@ display: inline-flex;
 
 .my-roww{
   height:435px;
-  margin-top:0px;
+  margin-top:30px;
   background-image: url('./assets/images/lovematch5.jpeg') ;
   background-repeat: no-repeat;
   background-size: 100%;
   background-position: 30px;
   background-color: cadetblue;
-  border: darkblue solid;
-  overflow-x: auto;
+  /* width: 100%; */
+  border: darkblue solid 6px;
+  /* height: 600px; */
+  overflow-x: hidden;
   overflow-y: hidden;
   display: inline-block;
+}
+.round-img{
+border-radius: 100%;
+margin-top:10px;
+}
+.zodiac-des{
+margin-top: 30px;
 }
 .my-row1{
   margin-top: 70px;

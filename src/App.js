@@ -16,7 +16,7 @@ import loveCalculator from './Pages/loveCalculator';
 import horoscopeMatchPage from './Pages/horoscopeMatchPage'
 import JoinChat from './components/chatComponents/joinChat'
 import Chat from './components/chatComponents/chat'
-import currentlyViewing from './components/users/currentlyViewing'
+import currentlyViewing from './components/otherUsers/currentlyViewing'
 
 class App extends Component {
   componentWillMount() {

@@ -101,7 +101,7 @@ class loveCalculator extends React.Component {
               <h1>
                 {property.sign.charAt(0).toUpperCase() + property.sign.slice(1)}
               </h1>
-              <img src={property.ElPicture} width="100px" height="100px" />
+              <img className="round-img" src={property.ElPicture} width="100px" height="100px" />
             </div>
             <h1>+</h1>
             <div className="col my-col2 right">
@@ -109,7 +109,7 @@ class loveCalculator extends React.Component {
                 {property2.sign.charAt(0).toUpperCase() +
                   property2.sign.slice(1)}
               </h1>
-              <img src={property2.ElPicture} width="100px" height="100px" />
+              <img className="round-img" src={property2.ElPicture} width="100px" height="100px" />
             </div>
             <br />
           </div>

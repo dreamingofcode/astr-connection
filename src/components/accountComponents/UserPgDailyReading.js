@@ -28,21 +28,21 @@ class UserPgDailyReading extends Component{
             this.props.history.push('/login');
           } 
         return(
-            <div className="my-container">
+            <React.Fragment>
                 <Styles>
-                <div className="row  justify-content-start">
+                <div className="row  my-row justify-content-start">
                     <div className="col-4 my-col3 justify-content-start">
                         <h2>Account Information </h2>
                         <AccountDetails/>
                     </div>
-                    <div className="col-6 my-col3 justify-content-around">
+                    <div className="col-7 my-col3 justify-content-around">
                         <h1>{this.props.userData.zodiac} Daily! </h1>
                        <img src={logo} alt="logo" height="170px" /><br/>
                         {this.props.zodiacIsLoading ? <h1>IS LOADING</h1> : <DailyReading/>} 
                     </div>
                 </div>
                 </Styles>
-            </div>
+            </React.Fragment>
         )
     }
 }

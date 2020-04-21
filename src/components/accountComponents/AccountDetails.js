@@ -54,7 +54,7 @@ class AccountDetails extends Component {
           </List>
 
           <RaisedButton
-          className="raised-button"
+        
             label="Edit Account"
             primary={true}
             style={styles.button}
