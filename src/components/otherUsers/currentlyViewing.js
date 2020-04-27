@@ -1,19 +1,22 @@
-import React from 'react';
-import { connect } from 'react-redux';
+import React, { useEffect } from 'react';
+
 // import UserPgDailyReading from '../components/accountComponents/UserPgDailyReading';
 import { withRouter } from 'react-router-dom';
 import { Link } from 'react-router-dom';
-import accountImg from '../../icons/acount1.png';
-import messageIcon from '../../icons/messageIcon.png';
-import blockIcon from '../../icons/block.png';
-import heartIcon from '../../icons/love.png';
-import ratingIcon from '../../assets/images/zodiacs/rating.jpg';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import { useSelector, useDispatch } from 'react-redux';
 import { List, ListItem } from 'material-ui/List';
 import RaisedButton from 'material-ui/RaisedButton';
 import UserZDescription from './userZDescription';
+import { matchMaker } from '../zodiacComponents/matchMaker';
+import compImage from '../otherUsers/compImage';
+import accountImg from '../../icons/acount1.png';
+import messageIcon from '../../icons/messageIcon.png';
+import blockIcon from '../../icons/block.png';
+import heartIcon from '../../icons/love.png';
+import ratingIcon from '../../assets/images/zodiacs/rating.jpg';
 import error from '../../icons/error.jpg';
+import imageIcon from '../../assets/images/imageIcon.png';
 
 const UserPage = (props) => {
   const dispatch = useDispatch();
@@ -24,17 +27,56 @@ const UserPage = (props) => {
   const isLoading = useSelector((state) => state.isLoading);
   const selectedZodiac = useSelector((state) => state.selectedZodiac);
   const Users = useSelector((state) => state.users);
+  const zodiacIsLoading = useSelector((state) => state.zodiacIsLoading);
+
   const token = localStorage.getItem('token');
   const horoscopeMatch = useSelector((state) => state.horoscopeMatch);
+  let profileImage = '';
 
-  const currentUserID = props.match.params.id;
+  useEffect(() => {
+    if (currentlyViewing && zodiacIsLoading) {
+      const match =
+        userData.zodiac.toLowerCase() +
+        ' ' +
+        currentlyViewing.zodiac.toLowerCase();
+      console.log('match', match);
+      let match_id = matchMaker(match);
+
+      console.log(match_id);
+      fetch(`http://localhost:3000/api/v1/zodiac_matches/${match_id}`)
+        .then((resp) => resp.json())
+        .then((data) => {
+          console.log('mathDATA', data);
+          dispatch({ type: 'FETCH_USER_ZODIAC!' });
+          dispatch({ type: 'HOROSCOPE_MATCH', payload: data });
+          return compImage(data, zodiacIsLoading);
+        });
+    }
+  }, [currentlyViewing]);
   if (!isLoading) {
-    if (currentlyViewing) {
-      const usersName =
-        currentlyViewing.name[0].toUpperCase() + currentlyViewing.name.slice(1);
-      console.log('mm', usersName);
+    if (currentlyViewing.posts && currentlyViewing.posts.length) {
+      profileImage = (
+        <img
+          className="my-h3 "
+          src={currentlyViewing.posts[0].image_url}
+          alt="user image"
+          height="200px"
+          style={{ transform: 'rotate(90deg)' }}
+        />
+      );
+    } else {
+      profileImage = (
+        <img
+          className="my-h3 "
+          src={accountImg}
+          alt="user image"
+          height="100px"
+        />
+      );
     }
   }
+
+  const currentUserID = props.match.params.id;
 
   if (!isLoading && Users) {
     const currentUser = Users.filter((user) => {
@@ -71,14 +113,7 @@ const UserPage = (props) => {
           <div className="row align-items-start">
             <div className="col-6 align-self-start  my-col3">
               <div className="row user-details align-self-start">
-                <div className="user-accountimage">
-                  <img
-                    className="my-h3 "
-                    src={accountImg}
-                    alt="user image"
-                    height="100px"
-                  />
-                </div>
+                <div className="user-accountimage">{profileImage}</div>
                 <List className="">
                   <label className="row ">
                     <h4> Born: {currentlyViewing.birthDate}</h4>
@@ -137,6 +172,17 @@ const UserPage = (props) => {
                     <RaisedButton
                       label={
                         <img
+                          src={imageIcon}
+                          alt="Read Compatibility"
+                          height="36px"
+                        />
+                      }
+                      primary={true}
+                      style={styles.button}
+                    />
+                    <RaisedButton
+                      label={
+                        <img
                           src={accountImg}
                           alt="Add to Friends"
                           height="30px"
@@ -156,17 +202,6 @@ const UserPage = (props) => {
                       primary={true}
                       style={styles.button}
                     />
-                    <RaisedButton
-                      label={
-                        <img
-                          src={heartIcon}
-                          alt="Read Compatibility"
-                          height="36px"
-                        />
-                      }
-                      primary={true}
-                      style={styles.button}
-                    />
                   </div>
                 </div>
                 <label className="user-bio justify-content-center ">
@@ -176,19 +211,21 @@ const UserPage = (props) => {
             </div>
             <div className="col-5 my-col3">
               <h1>Your Compatibility with a {currentlyViewing.zodiac}</h1>
-              <img
-                src={ratingIcon}
-                alt="compatibility rating metter"
-                height="300px"
-              />
+              {zodiacIsLoading ? (
+                <h1>IS Loading</h1>
+              ) : (
+                compImage(horoscopeMatch, userData, currentlyViewing.zodiac)
+              )}
               <label>{currentlyViewing.zodiac} is most Compatible with:</label>
               <h1> {selectedZodiac.Compatibility}</h1>
+              <p>You: {userData.zodiac}</p>
               <div className="buttons">
-                <Link onClick={console.log('Bitch')}
-                to={'/horoscope-match-page'}>
+                <Link
+                  onClick={() => console.log('Bitch')}
+                  to={'/horoscope-match-page'}
+                >
                   <RaisedButton
                     label={'READ Your Compatibility Report!'}
-                   
                     primary={true}
                     style={styles.button}
                   />

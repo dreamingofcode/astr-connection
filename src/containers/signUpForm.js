@@ -7,7 +7,6 @@ import UserDetailsForm from '../components/formComponents/UserDetailsForm';
 import UserPersonalForm from '../components/formComponents/UserPerosnalForm';
 import UserConfirmForm from '../components/formComponents/UserConfirmForm';
 import SuccessForm from '../components/formComponents/SuccessForm';
-import UserAccountDetails from '../components/formComponents/UserAccountDetails';
 
 class SignUpForm extends Component {
   state = {
@@ -22,12 +21,12 @@ class SignUpForm extends Component {
     zodiac: '',
     password_confirmation: '',
     age:18,
-    // img: ""
+  
   };
 
   componentDidMount() {
     const token = localStorage.token;
-    const { userData, isLoading } = this.props; //how to reuse this for edit functionality?
+    const { userData, isLoading } = this.props; 
     if (token) {
       //seems like userdata comes back too late to access the if statement! component mounts before the states uodate
 
@@ -42,7 +41,7 @@ class SignUpForm extends Component {
           birthDate: userData.birthDate,
           gender: userData.gender,
           sexualOrientation: userData.sexualOrientation,
-          //img needs import to edit
+         
         });
       
       }
@@ -159,7 +158,7 @@ class SignUpForm extends Component {
     this.setState({
       [input]: event.target.value,
     });
-    // console.log("image",this.state.img)
+   
   };
   render() {
     const {
@@ -172,7 +171,7 @@ class SignUpForm extends Component {
       birthDate,
       gender,
       sexualOrientation,
-      // img
+   
     } = this.state;
     const values = {
       name,
@@ -183,7 +182,7 @@ class SignUpForm extends Component {
       birthDate,
       gender,
       sexualOrientation,
-      // img
+ 
     };
     switch (step) {
       case 1:
@@ -204,18 +203,9 @@ class SignUpForm extends Component {
             handleZodiac={this.handleZodiac}
           />
         );
-      case 3:
-        return (
-          <UserAccountDetails
-            nextStep={this.nextStep}
-            prevStep={this.prevStep}
-            handleChange={this.handleChange}
-            values={values}
-            state={this.state}
-          />
-        );
+  
 
-      case 4:
+      case 3:
          return (
           <UserConfirmForm
             nextStep={this.nextStep}
@@ -224,7 +214,7 @@ class SignUpForm extends Component {
             state={this.state}
           />
         ); 
-        case 5:
+        case 4:
         return <SuccessForm state={this.state} />;
     }
   }

@@ -29,7 +29,7 @@ const Chat = ({ location }) => { //LOCATION is basically the url present
   const isLoading = useSelector((state) => state.isLoading);
    useEffect(() => {
     if (!isLoading) {
-      if (createChatRoom) {
+      // if (createChatRoom) {
         const reObj = {
           method: 'POST',
           headers: {
@@ -48,11 +48,11 @@ const Chat = ({ location }) => { //LOCATION is basically the url present
           .then((resp) => resp.json())
           .then((data) => {
           
-            dispatch({ type: 'CREATE_CHAT_ROOM' });
+            console.log("loader after", data)
+            // dispatch({ type: 'CREATE_CHAT_ROOM' });
           })
           .catch((error) => console.log(error));
-      }
-      console.log("loader after", createChatRoom)
+      // }
     }
   },[]);
   useEffect(() => {

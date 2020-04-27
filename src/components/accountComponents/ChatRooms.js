@@ -10,16 +10,7 @@ const ENDPOINT = 'localhost:5000'
 const ChatRooms = () => {
   let socket;
   const dispatch = useDispatch();
-  // const createUser=(name, room)=> {
-  //   socket = io(ENDPOINT)
-  //   if (currentChatRoom) {
-  //     socket.emit('join', { name, room }, (error) => {
-  //       if (error) {
-  //         alert(error);
-  //       }
-  //     });
-  //   }
-  // }
+
   const handleChatRoomFetch = (message) => {
     dispatch({
       type: 'CURRENT_CHAT_ROOM',

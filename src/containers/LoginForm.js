@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
 import { FacebookLoginButton } from 'react-social-login-buttons';
-import Fade from 'react-bootstrap/Fade'
 import { connect } from 'react-redux';
 class LoginForm extends Component {
   state = {

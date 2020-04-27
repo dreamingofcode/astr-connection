@@ -1,8 +1,10 @@
 // import {connect} from 'react-redux'
+import {getProfileDetails} from '../actions/profileDetails'
 export const getProfileFetch = () => {
   return (dispatch) => {
-    const token = localStorage.token;
     
+    const token = localStorage.token;
+
     if(token || !token){
       fetch(`http://localhost:3000/api/v1/zodiac_matches`)
       .then((resp) => resp.json())
@@ -20,7 +22,7 @@ export const getProfileFetch = () => {
       });
     };
     if (token) {
-      return fetch('http://localhost:3000/api/v1/current_user', {
+       fetch('http://localhost:3000/api/v1/current_user', {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
@@ -36,10 +38,31 @@ export const getProfileFetch = () => {
             localStorage.removeItem('token');
           } else {
             dispatch(loginSuccess(data));
-          }
+          //   fetch(`http://localhost:3000/posts/${data.id}`)
+          //   .then((resp) => resp.json())
+          //  .then((data) => {
+          //    if (!data.error) {
+          // getProfileDetails(data);
+        // }
+      // });
+       let images = [];
+       data.posts.map((post) => {
+         fetch(`http://localhost:3000/images/${post.id}`)
+           .then((resp) => resp.json())
+           .then((databack) => {
+             console.log('image render', databack);
+             images.push(databack.post);
+           });
+       });
+       dispatch(usersImages(images))
+      //  this.props.usersImages(images)
+      
+      }
         });
     }
+   
 };}
+// export default getProfileFetch
 const fetchUsers=(data)=>({
   type: "FETCH_USERS",
   payload: data
@@ -51,4 +74,8 @@ const horoscopeMatch=(data)=>({
 const loginSuccess = (userObj) => ({
   type: 'FETCH_USER_DATA',
   userData: userObj,
+});
+const usersImages = (images) => ({
+  type: 'FETCH_USERS_IMAGES',
+ payload: images,
 });

@@ -4,63 +4,123 @@ import RaisedButton from 'material-ui/RaisedButton';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import { List, ListItem } from 'material-ui/List';
 import { withRouter } from 'react-router-dom';
-import ListItemText from '@material-ui/core/ListItemText';
+import maleAccountImage from '../../icons/maleIcon.jpeg';
+import femaleAccountImage from '../../icons/femaleIcon.jpeg';
 
 class AccountDetails extends Component {
   renderEdit = () => {
     this.props.history.push('/account-details');
   };
+  handleAccountImage = () => {
+    const { userData } = this.props;
+    if (userData.gender === 'male') {
+      return (
+        <img
+          src={maleAccountImage}
+          alt="Account Image Placeholder"
+          className="round-img"
+        />
+      );
+    } else {
+      return (
+        <img
+          src={femaleAccountImage}
+          alt="Account Image Placeholder"
+          className="round-img"
+        />
+      );
+    }
+  };
+
+  componentDidMount() {
+    if (this.props.userData) {
+      let images = [];
+      this.props.userData.posts.map((post) => {
+        fetch(`http://localhost:3000/images/${post.id}`)
+          .then((resp) => resp.json())
+          .then((data) => {
+            console.log('image render', data);
+            images.push(data.post);
+          });
+      });
+      this.props.usersImages(images);
+    }
+  }
   render() {
+    let imageButton;
+    const { userData, userImage } = this.props;
+    {
+      if (userData.posts.lenght===0) {
+        imageButton = 'Upload Image!';
+      } else  {
+        imageButton = 'Edit Images!';
+      }
+    }
     return (
       <React.Fragment>
+        {userData.posts.length>0 ? (
+          <img
+            src={userData.posts[0].image_url}
+            alt="user's acount Image"
+            height="150px"
+            style={{ transform: 'rotate(90deg)' }}
+            className="round-img"
+          />
+        ) : (
+          this.handleAccountImage()
+        )}{' '}
+        <br />
         <MuiThemeProvider>
           <List>
+            <br />
             <ListItem
               style={styles.list}
               primaryText="Name"
-              secondaryText={this.props.userData.name}
+              secondaryText={userData.name}
             />
             <ListItem
               style={styles.list}
               primaryText="Email"
-              secondaryText={this.props.userData.email}
+              secondaryText={userData.email}
             />
             <ListItem
               style={styles.list}
               primaryText="Zodiac Sign"
-              secondaryText={this.props.userData.zodiac}
+              secondaryText={userData.zodiac}
             />
             <ListItem
               style={styles.list}
               primaryText="Date of Birth"
-              secondaryText={this.props.userData.birthDate}
+              secondaryText={userData.birthDate}
             />
             <ListItem
               style={styles.list}
               primaryText="Gender"
-              secondaryText={this.props.userData.gender}
+              secondaryText={userData.gender}
             />
             <ListItem
               style={styles.list}
               primaryText="Sexual Orientation"
-              secondaryText={this.props.userData.sexualOrientation}
-              />
-            <ListItem
-              style={styles.list}
-              primaryText="Bio"
-              secondaryText="."
-              />
-              <p>{this.props.userData.bio}</p>
+              secondaryText={userData.sexualOrientation}
+            />
+            <ListItem style={styles.list} primaryText="Bio" secondaryText="." />
+            <p>{userData.bio}</p>
           </List>
 
           <RaisedButton
-        
             label="Edit Account"
             primary={true}
             style={styles.button}
             onClick={this.renderEdit}
           />
-        
+          <RaisedButton
+            label={imageButton}
+            primary={true}
+            style={styles.button}
+            onClick={() => {
+              this.props.history.push('/image-upload');
+            }}
+          />
         </MuiThemeProvider>
       </React.Fragment>
     );
@@ -68,15 +128,27 @@ class AccountDetails extends Component {
 }
 const styles = {
   button: {
-    margin: 70
+    margin: 5,
   },
   list: {
-    margin: -20
-  }
+    margin: -20,
+  },
 };
 
-
-const mapStateToProps = state => {
-  return { userData: state.userData };
+const mapStateToProps = (state) => {
+  return { userData: state.userData, userImage: state.userImage };
 };
-export default withRouter(connect(mapStateToProps, null)(AccountDetails));
+const mapDispatchToProps = (dispatch) => {
+  return {
+    usersImages: (userImg) => {
+      const action = {
+        type: 'FETCH_USERS_IMAGES',
+        payload: userImg,
+      };
+      dispatch(action);
+    },
+  };
+};
+export default withRouter(
+  connect(mapStateToProps, mapDispatchToProps)(AccountDetails)
+);

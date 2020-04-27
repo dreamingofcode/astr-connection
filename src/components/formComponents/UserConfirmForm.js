@@ -9,25 +9,25 @@ class UserConfirmForm extends Component {
   continue = (event) => {
     //PROCESS-FORM//
     event.preventDefault();
- 
+
     this.props.newUserData(this.props.state);
     this.props.nextStep();
-    console.log("user user user", this.props.state)
   };
   back = (event) => {
     event.preventDefault();
     this.props.prevStep();
   };
   handleDelete = () => {
-    const {userData}= this.props
-    fetch(`http://localhost:3000/api/v1/users/${userData.id}`,{method: "DELETE"})
-    .then(resp=>resp.json())
-    .then(data=>{
-      console.log("delete",data)
-      this.props.history.push('/')
-      localStorage.clear()
-
-    });
+    const { userData } = this.props;
+    fetch(`http://localhost:3000/api/v1/users/${userData.id}`, {
+      method: 'DELETE',
+    })
+      .then((resp) => resp.json())
+      .then((data) => {
+        console.log('delete', data);
+        this.props.history.push('/');
+        localStorage.clear();
+      });
   };
 
   render() {
@@ -48,8 +48,8 @@ class UserConfirmForm extends Component {
       <MuiThemeProvider>
         <React.Fragment>
           <div className="login-form">
-          <img src={logo} alt="logo" height="170px" />
-          <h1>Confirm User Data!!!</h1>
+            <img src={logo} alt="logo" height="170px" />
+            <h1>Confirm User Data!!!</h1>
             <List>
               <ListItem primaryText="Name" secondaryText={name} />
               <ListItem primaryText="Email" secondaryText={email} />
@@ -121,9 +121,11 @@ const mapDispatchToProps = (dispatch) => {
     },
   };
 };
-const mapStateToProps=(state)=>{
-  return{
-    userData: state.userData
-  }
-}
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(UserConfirmForm));
+const mapStateToProps = (state) => {
+  return {
+    userData: state.userData,
+  };
+};
+export default withRouter(
+  connect(mapStateToProps, mapDispatchToProps)(UserConfirmForm)
+);
