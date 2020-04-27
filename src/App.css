@@ -64,8 +64,9 @@
 .my-h3{
   color: black;
   background-color: rgb(106, 206, 206);
-  width:250px;
-  height:250px;
+  width:230px;
+  height:200px;
+  margin-top: 40px;
   margin-left: 25px;
   margin-right: 55px;
   border:rgb(99, 87, 87) solid;
@@ -246,8 +247,15 @@ display: inline-flex;
 }
 .round-img{
 border-radius: 100%;
+/* border: black solid 5px; */
 margin-top:10px;
 }
+.user-img{
+  /* border-radius: 100%; */
+  border: black solid 5px;
+  margin-top:10px;
+  margin-bottom: 15px;
+  }
 .zodiac-des{
 margin-top: 30px;
 }

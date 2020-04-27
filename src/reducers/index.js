@@ -15,8 +15,10 @@ import currentChatUser from './chat/currentChatUser'
 import users from './chat/users'
 import usersLoading from './chat/usersLoading'
 import currentlyViewing from './accounts/currentlyViewing'
-import createChatRoom from './chat/createChatRoom'
+import fetchMessages from './chat/fetchMessages'
 import messageBoard from './chat/messageBoard'
+import userImage from './userImage'
+import usersImages from './usersImages'
 const allReducers= combineReducers({
    newUserData: newUserData,
    userAuth: userAuth,
@@ -32,8 +34,10 @@ const allReducers= combineReducers({
    users:users,
    usersLoading: usersLoading,
    currentlyViewing:currentlyViewing,
-   createChatRoom: createChatRoom,
+   fetchMessages: fetchMessages,
    messageBoard:messageBoard,
-   ChatsLoading:ChatsLoading
+   ChatsLoading:ChatsLoading,
+   userImage:userImage,
+   usersImages:usersImages
 })
 export default allReducers

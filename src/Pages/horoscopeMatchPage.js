@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-
+import compImage from '../components/otherUsers/compImage'
 class horoscopeMatchPage extends React.Component {
   state = {
     tab: '',
@@ -42,9 +42,11 @@ class horoscopeMatchPage extends React.Component {
           </button>
         </div>
         {!this.state.tab ? (
+          <div>
+            {compImage(horoscopeMatch)}
           <h1>
             Welcome to Your Horoascope Match Reading, Select Tabs to read!
-          </h1>
+          </h1></div>
         ) : null}
         {this.state.tab === 'general' ? (
           <div>

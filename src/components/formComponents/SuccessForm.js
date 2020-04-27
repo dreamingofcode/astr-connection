@@ -11,7 +11,7 @@ class SuccessForm extends Component {
     const token = localStorage.token;
     const { userData ,newUserData} = this.props;
 delete newUserData["step"]
-console.log("fuck you", newUserData)
+
     if (userData) {
       const configObj = {
         method: 'PUT',

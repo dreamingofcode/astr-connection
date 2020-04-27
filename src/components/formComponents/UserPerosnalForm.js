@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import TextField from 'material-ui/TextField';
-import Dialog from '@material-ui/core/Dialog';
+
 import RaisedButton from 'material-ui/RaisedButton';
 import DateForm from './DateForm';
 import GenderForm from './GenderForm';

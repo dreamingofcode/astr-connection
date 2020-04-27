@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { withRouter } from 'react-router-dom';
+import RaisedButton from 'material-ui/RaisedButton';
 import zodiacData from '../zodiacComponents/zodiacData';
 import DatingCards from '../../containers/datingCards';
 
@@ -13,20 +14,19 @@ const UserZDescription = () => {
   const selectedZodiac = useSelector((state) => state.selectedZodiac);
   const userData = useSelector((state) => state.userData);
   const currentlyViewing = useSelector((state) => state.currentlyViewing);
-if(currentlyViewing){
-  const userZodiac= currentlyViewing.zodiac
- const currentlyViewingZodiac = zodiacData.properties.filter(zodiac=>{
-  const uppercasedZodiac =zodiac.sign[0].toUpperCase()+zodiac.sign.slice(1) 
-   return uppercasedZodiac === userZodiac
- })
- dispatch({
-  type: "SELECTED_ZODIAC",
- selectedZodiac: currentlyViewingZodiac[0],
-});
-
-console.log("zoddy",currentlyViewingZodiac[0])
-}  
-return (
+  if (currentlyViewing) {
+    const userZodiac = currentlyViewing.zodiac;
+    const currentlyViewingZodiac = zodiacData.properties.filter((zodiac) => {
+      const uppercasedZodiac =
+        zodiac.sign[0].toUpperCase() + zodiac.sign.slice(1);
+      return uppercasedZodiac === userZodiac;
+    });
+    dispatch({
+      type: 'SELECTED_ZODIAC',
+      selectedZodiac: currentlyViewingZodiac[0],
+    });
+  }
+  return (
     <React.Fragment>
       {isLoading ? (
         <h1>Is Loading...</h1>
@@ -35,16 +35,32 @@ return (
           <div className="col-4 my-col3">
             <h1>{selectedZodiac.sign.toUpperCase()}</h1>
             <div className=""></div>
-            <img className="logo1" src={selectedZodiac.picture} alt="zodiac picture" height="200px"/>
-            <h3>Likes</h3>
+            <img
+              className="logo1"
+              src={selectedZodiac.picture}
+              alt="zodiac picture"
+              height="200px"
+            />
+            <h3>Likes 😍</h3>
             <p className="zodiac-bio">{selectedZodiac.likes}</p>
-            <h3 >Dislikes</h3>
+            <h3>Dislikes 😠</h3>
             <p className="zodiac-bio">{selectedZodiac.dislikes}</p>
-            <div className="zodiac-bio"></div>
+            <h3>Strengths 🤩</h3>
+            <p className="zodiac-bio">{selectedZodiac.Strengths}</p>
+            <h3>Weaknesses ☠️</h3>
+            <p className="zodiac-bio ">{selectedZodiac.Weaknesses}</p>
+            <Link
+             to={`/horoscope-discover-page`}>
+              <RaisedButton
+                label={`Read More About ${selectedZodiac.sign.toUpperCase()}`}
+                primary={true}
+              
+              />
+            </Link>
           </div>
           <div className="col-7 align-self-start order-12 my-col3">
-      <h1>{currentlyViewing.name}'s Friends List</h1>
-      <DatingCards/>
+            <h1>{currentlyViewing.name}'s Friends List</h1>
+            <DatingCards />
           </div>
         </div>
       )}

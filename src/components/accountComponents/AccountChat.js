@@ -23,40 +23,26 @@ const AccountChat = ({ location }) => {
   const [messages, setMessages] = useState([]); //what i will use to set messages from backend
   const ENDPOINT = 'localhost:5000'; //https://project-chat-application.herokuapp.com/
   const currentChatRoom = useSelector((state) => state.currentChatRoom);
-  const currentChatUser = useSelector((state) => state.currentChatUser);
+  const createChatRoom = useSelector((state) => state.createChatRoom);
   const currentlyViewing = useSelector((state) => state.currentlyViewing);
   const isLoading = useSelector((state) => state.isLoading);
-  const messageBoard = useSelector((state) => state.messageBoard);
+  const fetchMessages = useSelector((state) => state.fetchMessages);
 
-  // //    useEffect(() => {
-  // //     if (!isLoading) {
-  // //       if (createChatRoom) {
-  // //         const reObj = {
-  // //           method: 'POST',
-  // //           headers: {
-  // //             'Content-Type': 'application/json',
-  // //             Accept: 'application/json',
-  // //           },
-  // //           body: JSON.stringify({
-  // //             chatroom: {
-  // //               user1_id: userData.id,
-  // //               user2_id: currentlyViewing.id,
-  // //               name: currentChatRoom,
-  // //             },
-  // //           }),
-  // //         };
-  // //         fetch(`http://localhost:3000/api/v1/chat_rooms`, reObj)
-  // //           .then((resp) => resp.json())
-  // //           .then((data) => {
-  // //             console.log('we got a chat room', data);
-  // //             console.log("loader", createChatRoom)
-  // //             dispatch({ type: 'CREATE_CHAT_ROOM' });
-  // //           })
-  // //           .catch((error) => console.log(error));
-  // //       }
-  // //       console.log("loader after", createChatRoom)
-  // //     }
-  // //   },[]);
+  useEffect(() => {
+    if (!isLoading) {
+
+      fetch(`http://localhost:3000/api/v1/messages/${currentChatRoom.id}`)
+        .then((resp) => resp.json())
+        .then((data) => {
+          console.log('we got messages', data);
+
+          dispatch({ type: 'FETCH_MESSAGES', payload: data });
+        })
+        .catch((error) => console.log(error));
+
+      console.log('loader after', createChatRoom);
+    }
+  }, []);
   const createUser = (name, room) => {
     socket = io(ENDPOINT);
     if (currentChatRoom) {
@@ -70,7 +56,7 @@ const AccountChat = ({ location }) => {
   useEffect(() => {
     //generates the room and user
     socket = io(ENDPOINT);
-    name = userData.name.split(' ')[1];
+    name = userData.name.split(' ')[0];
     setName(name);
     room = currentChatRoom.name;
     setRoom(room);
@@ -80,37 +66,45 @@ const AccountChat = ({ location }) => {
 
   //handling messages,adding them to an existing history of messages
   useEffect(() => {
-    //   if (currentChatRoom)  {
-    socket.on('message', (message) => {
-      setMessages((messages) => [...messages, message]);
+    //   if (fetchMessages)  {
+        
+          socket.on('message', (message) => {
+            setMessages((messages) => [...messages, message]);
     });
 
     socket.on('roomData', ({ users }) => {
       setUsers(users);
     });
-    // }
-  }, [currentChatRoom]);
+    //   }
+  }, []);//currentChatRoom
   const sendMessage = (event) => {
     // function for sending messages
     event.preventDefault();
     if (message) {
       socket.emit('sendMessage', message, () => setMessage(''));
-    }
-    const config = {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        Accept: 'application/json',
-      },
-      body: JSON.stringify({
-        message:{user_id:userData.id, recipient_id: currentChatRoom.user2_id  , text: message, chatroom_name: currentChatRoom.name,chatroom_id:currentChatRoom.id, read:true}  
-      })
-    };
-    fetch(`http://localhost:3000/api/v1/messages`,config)
-      .then((resp) => resp.json())
-      .then((data) => {
-        console.log('newmessage', data);
-      });
+    }//used to create message in memory
+    // const config = {
+    //   method: 'POST',
+    //   headers: {
+    //     'Content-Type': 'application/json',
+    //     Accept: 'application/json',
+    //   },
+    //   body: JSON.stringify({
+    //     message: {
+    //       user_id: userData.id,
+    //       recipient_id: currentChatRoom.user2_id,
+    //       text: message,
+    //       chatroom_name: currentChatRoom.name,
+    //       chatroom_id: currentChatRoom.id,
+    //       read: true,
+    //     },
+    //   }),
+    // };
+    // fetch(`http://localhost:3000/api/v1/messages`, config)
+    //   .then((resp) => resp.json())
+    //   .then((data) => {
+    //     console.log('newmessage', data);
+    //   });
   };
 
   //const sendMessage =""
@@ -121,7 +115,12 @@ const AccountChat = ({ location }) => {
 
       <div className="chat-box">
         <InfoBar room={room} />
-        <Messages messages={messages} name={name} />
+        {/* {fetchMessages?
+        
+        <Messages messages={ fetchMessages} fetchMessages={fetchMessages} name={name} />:<Messages messages={ messages} name={name} />} */}
+    
+        
+<Messages messages={ messages} name={name} />
         <Input
           message={message}
           setMessage={setMessage}

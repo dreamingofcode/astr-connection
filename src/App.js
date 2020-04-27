@@ -17,7 +17,7 @@ import horoscopeMatchPage from './Pages/horoscopeMatchPage'
 import JoinChat from './components/chatComponents/joinChat'
 import Chat from './components/chatComponents/chat'
 import currentlyViewing from './components/otherUsers/currentlyViewing'
-
+import UserAccountDetails from './components/formComponents/ImageUpload'
 class App extends Component {
   componentWillMount() {
     this.props.getProfileFetch();
@@ -45,7 +45,7 @@ class App extends Component {
             <Route path="/horoscope-match-page" component={horoscopeMatchPage} />
             <Route path="/join-chat" component={JoinChat} />
             <Route path="/chat" component={Chat} />
-            {/* <Route path="/currently-viewing" component={currentlyViewing} /> */}
+            <Route path="/image-upload" component={UserAccountDetails} />
             <Route path="/currently-viewing/:id" component={currentlyViewing} />
 
             <header className="App-header">
