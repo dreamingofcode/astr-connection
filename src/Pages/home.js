@@ -24,7 +24,7 @@ class Home extends React.Component {
     return (
       <Styles>
         <div className="container my-container"></div>
-        <div className="row my-row justify-content-around">
+        <div className="row my-row col-sm-14">
           <div className="col-4 my-col justify-content-around">
             <h1>Discover Who You Truely Are!</h1>
 
@@ -100,14 +100,16 @@ class Home extends React.Component {
             </Link>
           </div>
         </div>
-        <Jumbo className="jumbo2">
-          <div className="filter">
+        <Jumbo className="jumbo2 ">
           <h1 className="my-h1">Users Near You!</h1>
-            {/* <Filter /> */}
+          <div className="">
+            <Filter />
           </div>
         <DatingCards />
         </Jumbo>
-        {/* <Footer/> */}
+        <div className="row footer">
+        <Footer/>
+        </div>
       </Styles>
     );
   }

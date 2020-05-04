@@ -2,8 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
-import { FacebookLoginButton } from 'react-social-login-buttons';
 import malePic from '../../icons/maleIcon.jpeg';
 import femalePic from '../../icons/femaleIcon.jpeg';
 import messageIcon from '../../icons/messageIcon.png';
@@ -22,7 +20,16 @@ const UserCard = ({ user, data }) => {
   const currentlyViewing = useSelector((state) => state.currentlyViewing);
   let profileImage = '';
   if (user.posts.length >= 1) {
-    profileImage = (
+    user.profile_image?
+      profileImage = (
+        <img
+          className="user-img"
+          src={user.profile_image}
+          alt="user image"
+          height="200px"
+          style={{ transform: 'rotate(90deg)' }}
+        />)
+   :profileImage = (
       <img
         className="user-img"
         src={user.posts[0].image_url}
@@ -30,7 +37,8 @@ const UserCard = ({ user, data }) => {
         height="200px"
         style={{ transform: 'rotate(90deg)' }}
       />
-    );
+    )
+    
   } else {
     if (user.gender === 'male') {
     profileImage=(
@@ -55,7 +63,7 @@ const UserCard = ({ user, data }) => {
   }
   return (
     <React.Fragment>
-      <h1>{user.name}</h1>
+      <h1>{user.name.split(" ")[0]}</h1>
       <br />
 
       <Link

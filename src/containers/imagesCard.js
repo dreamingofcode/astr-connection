@@ -20,16 +20,7 @@ const ImagesCard = ({ image }) => {
   }
 
   function setProfileImage() {
-    console.log('image', image);
-    dispatch({ type: 'FETCH_USER_IMAGE', payload: image });
-    ///this was an attempt to edit the order of posts so that the profile image selected would be made index 0
-    /// could possible use a reduxx state to realize which image has been selected as profile image but state is forgotten
-    // could also create a boolean table attribute to set profile image.
-
-    const images = userData.posts.filter((i) => i.id !== image.id);
-    const updatedImages = images.unshift(image);
-    console.log('images', images);
-    console.log('updatedimages', updatedImages);
+   console.log("profileimagfe", image.image_url)
 
     const config = {
       method: 'PUT',
@@ -38,18 +29,22 @@ const ImagesCard = ({ image }) => {
         Accept: 'application/json',
       },
       body: JSON.stringify({
-        user: { ...userData, posts: images },
+        user: { ...userData, profile_image: image.image_url },
       }),
     };
     fetch(`http://localhost:3000/api/v1/users/${userData.id}`, config)
       .then((resp) => resp.json())
       .then((data) => {
-        console.log('user update for profile image', data.posts);
+        console.log('user update for profile image', data);
+              dispatch({type:'FETCH_USER_DATA', userData:data})
+// dispatch({type:'DELETE_POST', payload:data.posts})
+        //  dispatch({type:'SET_USER_PROFILE_IMAGE', payload:data.profile_image})
       });
   }
 
   return (
     <MuiThemeProvider>
+      {!userData.profile_image?null:<h4>Select Profile image</h4>}
       <br /> <br />
       <img
         className="user-img"
@@ -69,6 +64,7 @@ const ImagesCard = ({ image }) => {
             label={'Make profile Image'}
             primary={true}
             style={styles.button}
+            disabled={image.image_url===userData.profile_image}
             onClick={() => {
               setProfileImage();
             }}

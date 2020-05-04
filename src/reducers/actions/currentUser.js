@@ -50,7 +50,6 @@ export const getProfileFetch = () => {
          fetch(`http://localhost:3000/images/${post.id}`)
            .then((resp) => resp.json())
            .then((databack) => {
-             console.log('image render', databack);
              images.push(databack.post);
            });
        });

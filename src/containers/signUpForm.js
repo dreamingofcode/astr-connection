@@ -20,13 +20,13 @@ class SignUpForm extends Component {
     sexualOrientation: '',
     zodiac: '',
     password_confirmation: '',
-    age:18,
-  
+    age: '',
+    profile_image: 'Please upload Image',
   };
 
   componentDidMount() {
     const token = localStorage.token;
-    const { userData, isLoading } = this.props; 
+    const { userData, isLoading } = this.props;
     if (token) {
       //seems like userdata comes back too late to access the if statement! component mounts before the states uodate
 
@@ -41,16 +41,32 @@ class SignUpForm extends Component {
           birthDate: userData.birthDate,
           gender: userData.gender,
           sexualOrientation: userData.sexualOrientation,
-         
+          profile_image: userData.profile_image,
         });
-      
       }
     }
   }
   ////function to determine your age and make sure your older than 18
-  handleAge=()=>{
-    const birthYear= this.state.birthDate.split("/")
-  }
+  handleAge = () => {
+    if (this.state.birthDate) {
+      const today = new Date();
+      var birthDates = new Date(this.state.birthDate);
+      var age = today.getFullYear() - birthDates.getFullYear();
+      var m = today.getMonth() - birthDates.getMonth();
+      if (m < 0 || (m === 0 && today.getDate() < birthDates.getDate())) {
+        age--;
+      }
+      if (age < 18) {
+        alert('You Must Be 18 or Older To Make An Account!');
+      } else {
+        this.nextStep()
+        this.setState({
+          age: age,
+       
+        });
+      }
+    }
+  };
   handleZodiac = () => {
     if (this.state.birthDate) {
       const { birthDate } = this.state;
@@ -154,11 +170,9 @@ class SignUpForm extends Component {
     });
   };
   handleChange = (input) => (event) => {
-    
     this.setState({
       [input]: event.target.value,
     });
-   
   };
   render() {
     const {
@@ -171,7 +185,6 @@ class SignUpForm extends Component {
       birthDate,
       gender,
       sexualOrientation,
-   
     } = this.state;
     const values = {
       name,
@@ -182,7 +195,6 @@ class SignUpForm extends Component {
       birthDate,
       gender,
       sexualOrientation,
- 
     };
     switch (step) {
       case 1:
@@ -201,20 +213,20 @@ class SignUpForm extends Component {
             handleChange={this.handleChange}
             values={values}
             handleZodiac={this.handleZodiac}
+            handleAge={this.handleAge}
           />
         );
-  
 
       case 3:
-         return (
+        return (
           <UserConfirmForm
             nextStep={this.nextStep}
             prevStep={this.prevStep}
             values={values}
             state={this.state}
           />
-        ); 
-        case 4:
+        );
+      case 4:
         return <SuccessForm state={this.state} />;
     }
   }

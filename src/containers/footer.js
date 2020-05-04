@@ -1,42 +1,87 @@
+import React, { Component } from 'react';
+import logo from '../assets/images/logo.png';
+import githubLogo from '../icons/git.svg';
+import linkedInLogo from '../icons/longlinked.svg';
+import emailLogo from '../icons/emailLogo.png';
 
-import React, { Component } from 'react'
-// import contact from '../Components/public/image/contactlogo.png';
-// import mailme from '../Components/public/image/mailmeimg.png';
-import styles from '../components/otherUsers/styles.module.css'
+import styles from '../components/otherUsers/styles.module.css';
 
 class Footer extends Component {
-    render() {
-        return (
-            <section className="container-1 my-container">
+  render() {
+    return (
+      <React.Fragment>
+        <div className="row justify-content-center">
+          <strong>
+            <div className="col-12 align-self-center">
+              {/* <img src={logo} width="80" height="80" alt="contactlogo" /> */}
+              <h1>A s t r o - C o n n e c t i on</h1>
+            </div>
 
-                {/* <img id="contactimg" src={contact} width="180" height="180" alt="contactlogo"/> */}
-                <h3> <strong>Okay Dexter</strong></h3>
-                <h4>Random Text Random text Random text</h4>
-                <h4>Email Id: okdexter94@gmail.com</h4>
-                {/* <a id="mail"href="https://mail.google.com/mail/?view=cm&fs=1&to=okdexter94@gmail.com"><img id="mailmelogo" src={mailme} alt="mail me"/>Click Here To Send Mail</a> */}
-                <h4>Contant Info: 19200999394/2999839902</h4>
+            <div className="col-12 ">
+              <h6>
+                Produced by{' '}
+                <a
+                  href="https://www.linkedin.com/in/cesar-mota365/"
+                  target="_blank"
+                >
+                  Cesar Mota
+                </a>
+              </h6>
+            </div>
+            <div className="footer-logos">
+              <div className=""></div>
+              <a
+                style={{
+                  border: '0px',
+                  margin: '10px',
+                  float: 'center',
+                  width: '10px',
+                }}
+                align="left"
+                href="https://github.com/dreamingofcode"
+                target="_blank"
+              >
+                <img src={githubLogo} alt="Github me" height="30px" />
+              </a>
 
-                
-                
-                        <a href="https://www.facebook.com/abhishek.shaji1">
-                        <span className="icon fa fa-facebook" style={{color:'antiquewhite'}} ></span>
-                        </a>
-                        <a href="https://twitter.com/techstud101" >
-                                <span className="icon fa fa-twitter"  style={{color:'antiquewhite'}}></span>
-                        </a>
-                        <a href="https://github.com/abhishek305">
-                                <span className="icon fa fa-github" style={{color:'antiquewhite'}} ></span>
-                        </a>
-                        <a href="https://www.linkedin.com/in/abhishek-ezhava-477286146/">
-                                <span className="icon fa fa-linkedin-square"  style={{color:'antiquewhite'}}></span>
-                        </a>
-                        <a href="https://techstud105blog.wordpress.com/">
-                                <span className="icon fa fa-wordpress" style={{color:'antiquewhite'}}></span>
-                        </a>
-                
-            </section>
-        )
-    }
+              <a
+                style={{
+                  border: '0px',
+                  margin: '10px',
+                  float: 'center',
+                  width: '50px',
+                }}
+                align="center"
+                href="https://www.linkedin.com/in/cesar-mota365/"
+                target="_blank"
+              >
+                <img
+                  src={linkedInLogo}
+                  alt="Add me on LinkedIn"
+                  height="30px"
+                />
+              </a>
+
+              <a href="mailto:cesarmota922@gmail.com" target="_blank">
+                <img
+                  style={{
+                    border: '0px',
+                    margin: '10px',
+                    float: 'center',
+                    width: '30px',
+                  }}
+                  align="center"
+                  src={emailLogo}
+                  alt="Send Email"
+                  height="30px"
+                />
+              </a>
+            </div>
+          </strong>
+        </div>
+      </React.Fragment>
+    );
+  }
 }
 
-export default Footer
+export default Footer;

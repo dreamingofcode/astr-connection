@@ -1,17 +1,16 @@
-import React, { useEffect , useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import logo from '../../assets/images/logo.png';
 import UsersImages from '../../containers/usersImages';
 import { withRouter } from 'react-router-dom';
 
-const UserAccountDetails  = (props) => {
-  
+const UserAccountDetails = (props) => {
   const userData = useSelector((state) => state.userData);
   const isLoading = useSelector((state) => state.isLoading);
   const usersImages = useSelector((state) => state.usersImages);
   const userImage = useSelector((state) => state.usersImages);
-const [update1, setUpdate1]=useState("")
+
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -34,11 +33,10 @@ const [update1, setUpdate1]=useState("")
   }, [userData]);
 
   const fileUpload = (event) => {
-    event.preventDefault()
-    event.stopPropagation()
+    event.preventDefault();
+    event.stopPropagation();
     const fd = new FormData(event.target);
 
-   
     const config = {
       method: 'POST',
       headers: {
@@ -46,21 +44,18 @@ const [update1, setUpdate1]=useState("")
       },
       body: fd,
     };
-console.log("oiuuu",fd)
+    console.log('oiuuu', fd);
     fetch(`http://localhost:3000/posts`, config)
       .then((resp) => resp.json())
       .then((data) => {
         console.log('imgae upload', data);
-        setUpdate1("p")
-        
+
         if (data.errors) {
           alert(data.errors);
         } else {
-         
           alert('Image successfully Uploaded!');
-          setUpdate1("dd")
 
-          const newData= data.post
+          const newData = data.post;
           const config = {
             method: 'PUT',
             headers: {
@@ -68,68 +63,71 @@ console.log("oiuuu",fd)
               Accept: 'application/json',
             },
             body: JSON.stringify({
-              post:{user_id: newData.user_id, caption: newData.caption, image: newData.image,image_url: newData.image_url}
+              post: {
+                user_id: newData.user_id,
+                caption: newData.caption,
+                image: newData.image,
+                image_url: newData.image_url,
+              },
             }),
           };
-          fetch(`http://localhost:3000/posts/${data.post.id}`,config)
-          .then(resp=>resp.json())
-          .then(data=>{
-            console.log("ddddata",data)
-            dispatch({ type: 'NEW_POST', payload:data });
-
-          })
-          setUpdate1("ll")
+          fetch(`http://localhost:3000/posts/${data.post.id}`, config)
+            .then((resp) => resp.json())
+            .then((data) => {
+              console.log('ddddata', data);
+              dispatch({ type: 'NEW_POST', payload: data });
+            });
         }
       })
-       .catch(console.error);
-      // setUpdate1("ll")
-    // this.props.history.push('/user-page')//how can i redirect users afternew image upload
+      .catch(console.error);
   };
-  const ChatsLoading = useSelector((state) => state.ChatsLoading);
 
   const token = localStorage.getItem('token');
   return (
     <MuiThemeProvider>
       <React.Fragment>
-        {token ? ( 
-          !isLoading?
-          <div className="login-form">
-            <img src={logo} alt="logo" height="170px" />
-            <h1>Image Upload Form</h1>
-            <br />
+        {token ? (
+          !isLoading ? (
+            <div className="login-form">
+              <img src={logo} alt="logo" height="170px" />
+              <h1>Image Upload Form</h1>
+              <br />
 
-            {!userData ? <h1>is Loading</h1> : <UsersImages />}
-            <br />
-            {usersImages ? (
-              usersImages.length === 3 ? (
-                <h4>You are only permitted to upload 3 Images</h4>
-              ) : null
-            ) : null}
-            <form onSubmit={fileUpload}>
-              <label htmlFor="image">
-                Upload image
-                <input type="file" name="image" accept="image/*" />
-              </label>
-              {isLoading ? (
-                <h1>IS LOADING.</h1>
-              ) : (
-                <input
-                  style={{ display: 'none' }}
-                  type="text"
-                  name="user_id"
-                  value={parseInt(userData.id)}
-                />
-              )}
-              <label htmlFor="caption">
-                Caption
-                <input type="text" name="caption" />
-              </label>
+              {!userData ? <h1>is Loading</h1> : <UsersImages />}
+              <br />
+              {usersImages ? (
+                usersImages.length === 3 ? (
+                  <h4>You are only permitted to upload 3 Images</h4>
+                ) : null
+              ) : null}
+              <form onSubmit={fileUpload}>
+                <label htmlFor="image">
+                  Upload image
+                  <input type="file" name="image" accept="image/*" />
+                </label>
+                {isLoading ? (
+                  <h1>IS LOADING.</h1>
+                ) : (
+                  <input
+                    style={{ display: 'none' }}
+                    type="text"
+                    name="user_id"
+                    value={parseInt(userData.id)}
+                  />
+                )}
+                <label htmlFor="caption">
+                  Caption
+                  <input type="text" name="caption" />
+                </label>
 
-              <input type="submit" value="Submit" />
-            </form>
-          </div>:<h1>Is LOADING....</h1>
+                <input type="submit" value="Submit" />
+              </form>
+            </div>
+          ) : (
+            <h1>Is LOADING....</h1>
+          )
         ) : (
-         props.history.push('/login')
+          props.history.push('/login')
         )}
       </React.Fragment>
     </MuiThemeProvider>

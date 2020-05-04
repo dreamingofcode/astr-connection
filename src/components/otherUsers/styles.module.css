@@ -1,14 +1,15 @@
 .form {
     padding: 20px;
-    background-color: #f7f8f9;
+    background-color: #8ab6e1;
     border-radius: 0.2rem;
   }
   
   .container {
     padding: 0;
+    margin-top: -10px;
   }
   .header-h1{
-    color: antiquewhite;
+    color: grey;
     font-family: 'Roboto Condensed', sans-serif;
     text-align: center;
     text-transform: uppercase;
@@ -89,7 +90,7 @@
 }
 
 .container-banner{
-    background-color: #f1f1f1;
+    background-color: #742323;
     text-align: center;
     border-style: hidden;
     border-radius: 15px;
@@ -179,6 +180,7 @@ transform: scale(1.1);
     flex-direction: row-reverse;
     justify-content: space-evenly; 
     flex-wrap: wrap;
+    margin-top: 100px;
 }
 
 .container a{

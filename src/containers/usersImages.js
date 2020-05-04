@@ -7,6 +7,7 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 const UsersImages = () => {
   const dispatch = useDispatch();
   const userData = useSelector((state) => state.userData);
+  const isLoading = useSelector((state) => state.isLoading);
 
   const usersImages = useSelector((state) => state.usersImages);
   console.log('china', usersImages);
