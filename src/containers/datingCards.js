@@ -11,28 +11,21 @@ const DatingCards = () => {
   const userData = useSelector((state) => state.userData);
   const users = useSelector((state) => state.users);
   const usersLoading = useSelector((state) => state.usersLoading);
-  // const handleImagesFetch=(user)=>{
-
-  //   if(user.posts.length>1){
-  //   fetch(`http://localhost:3000/posts/${user.id}`)
-  //   .then((resp) => resp.json())
-  //   .then((data) => {
-  //     console.log('uuuuserrimage render', data);
-  //    return data
-  //   });}
-  //}
+  const filteredUsers = useSelector((state) => state.filteredUsers);
+  let usersArray=""
+  filteredUsers && filteredUsers.length !==0? usersArray = filteredUsers:  usersArray= users
   return (
     <div className="users-container">
       <div className="row">
         {usersLoading ? (
           <h1>Is Loading...</h1>
         ) : (
-          users.map((user) => {
-            if (user.posts.length > 1) {
+        //  filteredUsers? usersArray = filteredUsers:  usersArray= users
+          usersArray.map((user) => {
+            if (user.posts.length >= 1) {
               fetch(`http://localhost:3000/posts/${user.id}`)
                 .then((resp) => resp.json())
                 .then((data) => {
-                  // console.log('uuuuserrimage render', data);
                   return (
                     <div className="col-3 users-Card">
                       <UserCard key={user.id} user={user} image={data} />
@@ -41,7 +34,7 @@ const DatingCards = () => {
                 });
             }
             return (
-              <div className="col-3 users-Card">
+              <div className="col-3 users-Card col-md-3 col-xs-12 ">
                 <UserCard key={user.id} user={user} />
               </div>
             );

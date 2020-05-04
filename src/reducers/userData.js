@@ -8,6 +8,8 @@ export default function userData(state = initialState, action) {
       return {...state,posts:[...state.posts, action.payload]};
       case 'DELETE_POST':
         return {...state,posts: action.payload};
+        case 'SET_USER_PROFILE_IMAGE':
+        return {...state,proflie_image: action.payload};
     default:
       return state;
   }

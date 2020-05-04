@@ -4,35 +4,40 @@ import styled from 'styled-components';
 import logo from '../assets/images/logo.png';
 import { connect } from 'react-redux';
 const Styles = styled.div`
+
   .navbar {
     background-image: url('../assets/images/cosmos.jpg');
     background-color: rgb(13, 180, 180);
-    height: 80px;
+    height: 100px;
     transition: all 0.5s;
     z-index: 997;
     transition: all 0.5s;
     padding: 16px 0;
-    // margin-top: -40px;
-
-    // border-radius: 6px;
   }
 
   .navbar-nav,
-  .navbar-light .nav-link {
-    color: #9fffcb;
+  .navbar-light, .nav-link {
+    color: #FFFFFF;
     &:hover {
-      color: white;
+      color: #FFFFFF;
     }
     font-size: 1.2em;
+  }
+  .nav-link{
+    margin-right:30px;
   }
   .navbar-brand {
     font-size: 3em;
     font-family: monospace;
     color: white;
+    margin-left: 10px;
     &:hover {
-      color: white;
+      color: #FFFFFF;
     }
   }
+.logo{
+  margin-left:20px;
+}
   .form-center {
     position: absolute !important;
     left: 37%;
@@ -55,7 +60,7 @@ class NavigationBar extends React.Component {
           {/* <Form className="form-center">
             <FormControl type="text" placeholder="Search" className="" />
           </Form> */}
-          <Navbar.Collapse id="basic-navbar-nav">
+          <Navbar.Collapse id="basic-navbar-nav" >
             <Nav className="ml-auto">
               <Nav.Item>
                 <Nav.Link href="/">Home</Nav.Link>

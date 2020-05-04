@@ -27,7 +27,7 @@ class App extends Component {
       <div className="App">
         <Router>
           <NavBar />
-          <Jumbo className="jumbo" fluid>
+          <Jumbo className="App" fluid>
             <div className="my-h1">
             <img src={logo} circle className="logo1" height="150px" />
             <h1 className="my-h2">Astro-Connection</h1>

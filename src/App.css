@@ -2,7 +2,23 @@
   text-align: center;
   background-image: url('./assets/images/cosmos.jpg');
   background-repeat: no-repeat;
-  background-size: 4000px;
+  background-size: cover;
+}
+.footer{
+  border: black solid;
+font-family: monospace;
+text-align: center;
+background-color: rgb(106, 206, 206);
+  margin-top: -34px;
+  width: cover;
+  padding-left: 320px;
+  padding-bottom: 10px;
+  padding-top: 20px;
+}
+.footer-logos{
+  padding-right:5px;
+  margin-right:5px
+
 }
 .login-page {
   /* background-image: url("../src/assets/images/login.jpg"); */
@@ -16,16 +32,22 @@
   color: white;
   font-family: monospace;
   margin-bottom: -100px;
+  border: black solid;
 }
 .jumbo2 {
   background-image: url('../src/assets/images/login.jpg');
   color: white;
   font-family: monospace;
   margin-top: 00px;
-  height: 1700px;
+  height: 100%;
+
 }
 .filter{
-  margin-top: 0px;
+  height: 200px;
+  margin-top: 10px;
+  border: rgb(106, 206, 206) 10px solid;
+/* background-image: url('../src/assets/images/cosmos.jpg'); */
+  background-color: rgb(57, 94, 105);
 }
 .my-h1{
   border: rgb(106, 206, 206) solid;
@@ -72,7 +94,8 @@
   border:rgb(99, 87, 87) solid;
 }
 .buttons2{
-margin-left: 270px;
+  margin-top:-57px;
+  margin-left: 270px;
 }
 .user-bio{
   color: black;
@@ -172,7 +195,7 @@ margin-left: 270px;
   /* overflow-y: hidden; */
   overflow-x: hidden;
   display: inline-block;
-  height: 530px;
+  height: 610px;
 
 }
 
@@ -221,13 +244,18 @@ display: inline-flex;
 }
 
 .my-container {
+  /* for other user's page */
   margin-top: -45px;
   /* width: 100%; */
   background-color: rgb(106, 206, 206);
  
 }
 .my-row{
-  margin-top:-32px;
+  margin-top:-33px;
+  margin-left: 20px;
+  /* text-align: left; */
+  /* align-content: flex-start; */
+  align-self: left;
 }
 
 .my-roww{
@@ -241,6 +269,20 @@ display: inline-flex;
   /* width: 100%; */
   border: darkblue solid 6px;
   /* height: 600px; */
+  overflow-x: hidden;
+  overflow-y: hidden;
+  display: inline-block;
+}
+.my-roww2{
+  /* for imageslider */
+  height:435px;
+  margin-top:10px;
+  margin-left:10px;
+  /* margin-right:80px; */
+  background-color: cadetblue;
+  width: 100%;
+  border: darkblue solid 6px;
+  height: 300px;
   overflow-x: hidden;
   overflow-y: hidden;
   display: inline-block;
@@ -262,6 +304,18 @@ margin-top: 30px;
 .my-row1{
   margin-top: 70px;
 
+}
+.flex-item{
+  /* for filtering */
+  justify-content: left;
+  text-align: start;
+  margin-left: 5px;
+}
+.flex-item1{
+  /* for filtering */
+  justify-content: left;
+  text-align: start;
+  margin-left: 155px;
 }
 .my-col{
   border: darkred solid;
@@ -388,7 +442,8 @@ section {
         .col:after {
           left: auto;
           right: 0;
-          background: linear-gradient(to left, white 15%, rgba(255, 255, 255, 0) 100%); }
+          background: linear-gradient(to left, white 15%, rgba(255, 255, 255, 0) 100%); 
+        }
   .cards-slider.active-slide-0 #card-0 {
     opacity: 1.5;
     transform: scale(1);

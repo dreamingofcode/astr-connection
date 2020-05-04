@@ -10,6 +10,7 @@ import RaisedButton from 'material-ui/RaisedButton';
 import UserZDescription from './userZDescription';
 import { matchMaker } from '../zodiacComponents/matchMaker';
 import compImage from '../otherUsers/compImage';
+import ImageSlider from '../otherUsers/imageSlider';
 import accountImg from '../../icons/acount1.png';
 import messageIcon from '../../icons/messageIcon.png';
 import blockIcon from '../../icons/block.png';
@@ -34,19 +35,18 @@ const UserPage = (props) => {
   let profileImage = '';
 
   useEffect(() => {
-    if (currentlyViewing && zodiacIsLoading) {
+    
+    if (token && currentlyViewing && zodiacIsLoading) {
+    
       const match =
         userData.zodiac.toLowerCase() +
         ' ' +
         currentlyViewing.zodiac.toLowerCase();
-      console.log('match', match);
       let match_id = matchMaker(match);
 
-      console.log(match_id);
       fetch(`http://localhost:3000/api/v1/zodiac_matches/${match_id}`)
         .then((resp) => resp.json())
         .then((data) => {
-          console.log('mathDATA', data);
           dispatch({ type: 'FETCH_USER_ZODIAC!' });
           dispatch({ type: 'HOROSCOPE_MATCH', payload: data });
           return compImage(data, zodiacIsLoading);
@@ -106,33 +106,34 @@ const UserPage = (props) => {
           </h1>
         </div>
       ) : (
-        <div className="contianer my-container">
+        <div className="my-container">
           <h1 className="user-header">
             {currentlyViewing.name}'s Account Page
           </h1>
           <div className="row align-items-start">
             <div className="col-6 align-self-start  my-col3">
               <div className="row user-details align-self-start">
-                <div className="user-accountimage">{profileImage}</div>
-                <List className="">
-                  <label className="row ">
+                {/* <div className="user-accountimage">{profileImage}</div> */}
+                  {currentlyViewing?
+                  <ImageSlider />:null}
+                <List>
+                  <label className="my-row align-self-start">
                     <h4> Born: {currentlyViewing.birthDate}</h4>
-                  </label>
+                  </label><br/>
 
-                  <label className="row">
-                    <h4> Current Age: {currentlyViewing.age}</h4>
-                  </label>
+                  <label className="my-row">
+                    <h4>Current Age: {currentlyViewing.age}</h4>
+                  </label><br/>
 
-                  <label className="row ">
+                  <label className="my-row ">
                     <h4> Zodiac: {currentlyViewing.zodiac}</h4>
-                  </label>
-                  <label className="row">
+                  </label><br/>
+                  <label className="my-row">
                     <h4> Gender: {currentlyViewing.gender}</h4>
-                  </label>
-                  <label className="row">
+                  </label><br/>
+                  <label className="my-row">
                     <h4>
-                      {' '}
-                      Sexual-Orientation: {currentlyViewing.sexualOrientation}
+                    Sexual-Orientation: {currentlyViewing.sexualOrientation}
                     </h4>
                   </label>
                 </List>

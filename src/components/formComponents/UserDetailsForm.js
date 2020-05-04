@@ -7,12 +7,14 @@ import RaisedButton from 'material-ui/RaisedButton';
 // import { Link } from 'react-router-dom';
 import logo from '../../assets/images/logo.png';
 class UserDetailsForm extends Component {
-  continue = event => {
+  continue = (event) => {
     event.preventDefault();
     this.props.nextStep();
   };
   render() {
     const { values, handleChange } = this.props;
+    const token = localStorage.token;
+
     return (
       <MuiThemeProvider>
         <React.Fragment>
@@ -22,7 +24,8 @@ class UserDetailsForm extends Component {
             </h1>
             <img src={logo} alt="logo" height="170px" /> */}
             <img src={logo} alt="logo" height="170px" />
- <h1>Sign-up Form</h1>
+            {token ? <h1>Edit Form</h1> : <h1>Sign-up Form</h1>}
+
             <TextField
               hintText="Enter your Full Name"
               floatingLabelText="Full name"
@@ -66,7 +69,7 @@ class UserDetailsForm extends Component {
 }
 const styles = {
   button: {
-    margin: 15
-  }
+    margin: 15,
+  },
 };
 export default UserDetailsForm;

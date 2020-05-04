@@ -8,22 +8,25 @@ import BioForm from './BioForm';
 import SexualOForm from './SexualOForm';
 import logo from '../../assets/images/logo.png';
 class UserPersonalForm extends Component {
-  continue = event => {
+  continue = (event) => {
     event.preventDefault();
-    this.props.nextStep();
-    this.props.handleZodiac()
+    // this.props.nextStep();
+    this.props.handleZodiac();
+    this.props.handleAge()
   };
-  back = event => {
+  back = (event) => {
     event.preventDefault();
     this.props.prevStep();
   };
   render() {
-    const { values, handleChange } = this.props;
+    const { values, handleChange ,handleAge} = this.props;
+    const token = localStorage.token;
+
     return (
       <MuiThemeProvider>
         <div className="login-form">
           <img src={logo} alt="logo" height="170px" />
-          <h1>Sign-up Form</h1>
+          {token ? <h1>Edit Form</h1> : <h1>Sign-up Form</h1>}
           <div className="date-form">
             <DateForm handleChange={handleChange} values={values} />
           </div>
@@ -52,7 +55,7 @@ class UserPersonalForm extends Component {
 }
 const styles = {
   button: {
-    margin: 15
-  }
+    margin: 15,
+  },
 };
 export default UserPersonalForm;
