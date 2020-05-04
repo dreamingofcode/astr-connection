@@ -107,7 +107,7 @@ class Home extends React.Component {
           </div>
         <DatingCards />
         </Jumbo>
-        <div className="row footer">
+        <div className="row footer ">
         <Footer/>
         </div>
       </Styles>
