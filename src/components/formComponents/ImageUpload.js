@@ -54,7 +54,7 @@ const UserAccountDetails = (props) => {
           alert(data.errors);
         } else {
           alert('Image successfully Uploaded!');
-
+          console.log("puta",data)
           const newData = data.post;
           const config = {
             method: 'PUT',
