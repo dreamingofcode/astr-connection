@@ -50,7 +50,7 @@ class AccountDetails extends Component {
     let imageButton;
     const { userData, userImage } = this.props;
     {
-      if (userData.posts.lenght===0) {
+      if (userData.posts.length ===0) {
         imageButton = 'Upload Image!';
       } else  {
         imageButton = 'Edit Images!';

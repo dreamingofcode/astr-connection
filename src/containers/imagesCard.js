@@ -44,8 +44,7 @@ const ImagesCard = ({ image }) => {
 
   return (
     <MuiThemeProvider>
-      {!userData.profile_image?null:<h4>Select Profile image</h4>}
-      <br /> <br />
+  
       <img
         className="user-img"
         src={image.image_url}
@@ -59,7 +58,7 @@ const ImagesCard = ({ image }) => {
         <section>
           <br /> <br />
           <label>Caption: {image.caption}</label>
-          <label>Upload on {image.created_at}</label>
+          <label>Uploaded on {image.created_at}</label>
           <RaisedButton
             label={'Make profile Image'}
             primary={true}
