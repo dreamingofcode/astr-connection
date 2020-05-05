@@ -69,6 +69,7 @@ class SignUpForm extends Component {
   };
   handleZodiac = () => {
     if (this.state.birthDate) {
+      console.log("we made it",this.state.birthDate)
       const { birthDate } = this.state;
       const month = birthDate.split('-')[1];
       const day = birthDate.split('-')[2];
@@ -155,6 +156,8 @@ class SignUpForm extends Component {
         });
       }
     }
+    console.log("we made it 2",this.state.zodiac)
+
   };
   nextStep = () => {
     const { step } = this.state;
