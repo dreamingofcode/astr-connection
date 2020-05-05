@@ -6,7 +6,7 @@ export const getProfileFetch = () => {
     const token = localStorage.token;
 
     if(token || !token){
-      fetch(`http://localhost:3000/api/v1/zodiac_matches`)
+      fetch(`https://astro-connection.herokuapp.com/api/v1/zodiac_matches`)
       .then((resp) => resp.json())
       .then((data) => {
      
@@ -14,7 +14,7 @@ export const getProfileFetch = () => {
       });
     };
     if(token || !token){
-      fetch(`http://localhost:3000/api/v1/users`)
+      fetch(`http://astro-connection.herokuapp.com/api/v1/users`)
       .then((resp) => resp.json())
       .then((data) => {
      
@@ -22,7 +22,7 @@ export const getProfileFetch = () => {
       });
     };
     if (token) {
-       fetch('http://localhost:3000/api/v1/current_user', {
+       fetch('http://astro-connection.herokuapp.com/api/v1/current_user', {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',

@@ -57,7 +57,7 @@ class loveCalculator extends React.Component {
      let match_id= matchMaker(match)
   
     console.log(match_id)
-    fetch(`http://localhost:3000/api/v1/zodiac_matches/${match_id}`)
+    fetch(`https://astro-connection.herokuapp.com/api/v1/zodiac_matches/${match_id}`)
     .then(resp=> resp.json())
     .then(data=>{
       console.log("mathDATA",data)

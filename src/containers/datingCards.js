@@ -23,9 +23,10 @@ const DatingCards = () => {
         //  filteredUsers? usersArray = filteredUsers:  usersArray= users
           usersArray.map((user) => {
             if (user.posts.length >= 1) {
-              fetch(`http://localhost:3000/posts/${user.id}`)
+              fetch(`https://astro-connection.herokuapp.com/posts/${user.id}`)
                 .then((resp) => resp.json())
                 .then((data) => {
+                  console.log(data)
                   return (
                     <div className="col-3 users-Card">
                       <UserCard key={user.id} user={user} image={data} />
