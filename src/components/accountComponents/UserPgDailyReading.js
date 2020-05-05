@@ -17,7 +17,7 @@ const Styles = styled.div`
 class UserPgDailyReading extends Component{
  
     componentDidMount(){
-        fetch(`https://sandipbgt.com/theastrologer/api/horoscope/${this.props.userData.zodiac.toLowerCase()}/today`)
+        fetch(`http://sandipbgt.com/theastrologer/api/horoscope/${this.props.userData.zodiac.toLowerCase()}/today`)
         .then(resp=>resp.json())
         .then(data=>{
     
