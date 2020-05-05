@@ -15,7 +15,7 @@ class currentlyViewing extends Component {
           Authorization: `Bearer ${token}`
         }
       };
-      fetch('http://localhost:3000/api/v1/current_user', reqObj)
+      fetch('https://astro-connection.herokuapp.com/api/v1/current_user', reqObj)
         .then(resp => resp.json())
         .then(data => {
           this.props.fetchUserData(data);

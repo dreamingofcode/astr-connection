@@ -36,7 +36,7 @@ class AccountDetails extends Component {
     if (this.props.userData) {
       let images = [];
       this.props.userData.posts.map((post) => {
-        fetch(`http://localhost:3000/images/${post.id}`)
+        fetch(`https://astro-connection.herokuapp.com/images/${post.id}`)
           .then((resp) => resp.json())
           .then((data) => {
             console.log('image render', data);

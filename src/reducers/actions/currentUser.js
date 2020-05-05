@@ -14,7 +14,7 @@ export const getProfileFetch = () => {
       });
     };
     if(token || !token){
-      fetch(`http://astro-connection.herokuapp.com/api/v1/users`)
+      fetch(`https://astro-connection.herokuapp.com/api/v1/users`)
       .then((resp) => resp.json())
       .then((data) => {
      
@@ -22,7 +22,7 @@ export const getProfileFetch = () => {
       });
     };
     if (token) {
-       fetch('http://astro-connection.herokuapp.com/api/v1/current_user', {
+       fetch('https://astro-connection.herokuapp.com/api/v1/current_user', {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
@@ -47,7 +47,7 @@ export const getProfileFetch = () => {
       // });
        let images = [];
        data.posts.map((post) => {
-         fetch(`http://localhost:3000/images/${post.id}`)
+         fetch(`https://astro-connection.herokuapp.com/images/${post.id}`)
            .then((resp) => resp.json())
            .then((databack) => {
              images.push(databack.post);

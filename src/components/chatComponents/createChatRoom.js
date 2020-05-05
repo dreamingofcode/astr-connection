@@ -16,7 +16,7 @@ const CreateChatRoom = ({userData,currentlyViewing,currentChatRoom}) => {
         }),
       };
   return(
-    fetch(`http://localhost:3000/api/v1/chat_rooms`, reObj)
+    fetch(`https://astro-connection.herokuapp.com/api/v1/chat_rooms`, reObj)
       .then((resp) => resp.json())
       .then((data) => {
         console.log('we got a chat room', data);

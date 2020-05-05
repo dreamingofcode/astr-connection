@@ -45,7 +45,7 @@ const UserAccountDetails = (props) => {
       body: fd,
     };
     console.log('oiuuu', fd);
-    fetch(`http://localhost:3000/posts`, config)
+    fetch(`https://astro-connection.herokuapp.com/posts`, config)
       .then((resp) => resp.json())
       .then((data) => {
         console.log('imgae upload', data);
@@ -71,7 +71,7 @@ const UserAccountDetails = (props) => {
               },
             }),
           };
-          fetch(`http://localhost:3000/posts/${data.post.id}`, config)
+          fetch(`https://astro-connection.herokuapp.com/posts/${data.post.id}`, config)
             .then((resp) => resp.json())
             .then((data) => {
               console.log('ddddata', data);

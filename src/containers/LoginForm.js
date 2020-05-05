@@ -23,7 +23,7 @@ class LoginForm extends Component {
       },
       body: JSON.stringify(this.state)
     };
-    fetch(`http://localhost:3000/api/v1/auth`, configObj)
+    fetch(`https://astro-connection.herokuapp.com/api/v1/auth`, configObj)
       .then(resp => resp.json())
       .then(data => {
         console.log('user logging in data', data);

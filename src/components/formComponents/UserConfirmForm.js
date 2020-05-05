@@ -19,7 +19,7 @@ class UserConfirmForm extends Component {
   };
   handleDelete = () => {
     const { userData } = this.props;
-    fetch(`http://localhost:3000/api/v1/users/${userData.id}`, {
+    fetch(`https://astro-connection.herokuapp.com/api/v1/users/${userData.id}`, {
       method: 'DELETE',
     })
       .then((resp) => resp.json())

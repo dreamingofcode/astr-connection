@@ -16,7 +16,7 @@ const ChatRooms = () => {
       type: 'CURRENT_CHAT_ROOM',
       payload: message,
     });
-    fetch(`http://localhost:3000/api/v1/chat_rooms/${userData.id}`) //will fetch messages belonging to chatroom
+    fetch(`https://astro-connection.herokuapp.com/api/v1/chat_rooms/${userData.id}`) //will fetch messages belonging to chatroom
       .then((resp) => resp.json())
       .then((data) => {
         console.log('chatrooms', data);
@@ -28,7 +28,7 @@ const ChatRooms = () => {
   };
   const handleChatDelete = (event) => {
     const chatId = event.target.value;
-    fetch(`http://localhost:3000//api/v1/chat_rooms/${chatId}`, {
+    fetch(`https://astro-connection.herokuapp.com/api/v1/chat_rooms/${chatId}`, {
       method: 'DELETE',
     })
       .then((resp) => resp.json())

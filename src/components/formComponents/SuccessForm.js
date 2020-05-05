@@ -23,7 +23,7 @@ delete newUserData["step"]
           user: newUserData,
         }),
       };
-      fetch(`http://localhost:3000/api/v1/users/${userData.id}`, configObj)
+      fetch(`https://astro-connection.herokuapp.com/api/v1/users/${userData.id}`, configObj)
         .then((resp) => resp.json())
         .then((data) => {
           console.log('newupdaTTTT', data);
@@ -39,7 +39,7 @@ delete newUserData["step"]
           user: this.props.newUserData,
         }),
       };
-      fetch(`http://localhost:3000/api/v1/users`, configObj)
+      fetch(`https://astro-connection.herokuapp.com/api/v1/users`, configObj)
         .then((resp) => resp.json())
         .then((data) => {
           console.log('newUSERRR', data);

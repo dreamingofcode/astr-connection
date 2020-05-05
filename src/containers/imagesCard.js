@@ -9,7 +9,7 @@ const ImagesCard = ({ image }) => {
 
   function handleDelete() {
     console.log('biit');
-    fetch(`http://localhost:3000/posts/${image.id}`, { method: 'DELETE' })
+    fetch(`https://astro-connection.herokuapp.com/posts/${image.id}`, { method: 'DELETE' })
       .then((resp) => resp.json())
       .then((data) => {
         console.log('delted', data);
@@ -32,7 +32,7 @@ const ImagesCard = ({ image }) => {
         user: { ...userData, profile_image: image.image_url },
       }),
     };
-    fetch(`http://localhost:3000/api/v1/users/${userData.id}`, config)
+    fetch(`https://astro-connection.herokuapp.com/api/v1/users/${userData.id}`, config)
       .then((resp) => resp.json())
       .then((data) => {
         console.log('user update for profile image', data);
