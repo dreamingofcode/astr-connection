@@ -45,15 +45,15 @@ export const getProfileFetch = () => {
           // getProfileDetails(data);
         // }
       // });
-       let images = [];
-       data.posts.map((post) => {
-         fetch(`http://localhost:3000/images/${post.id}`)
-           .then((resp) => resp.json())
-           .then((databack) => {
-             images.push(databack.post);
-           });
-       });
-       dispatch(usersImages(images))
+      //  let images = [];
+      //  data.posts.map((post) => {
+      //    fetch(`http://localhost:3000/images/${post.id}`)
+      //      .then((resp) => resp.json())
+      //      .then((databack) => {
+      //        images.push(databack.post);
+      //      });
+      //  });
+      //  dispatch(usersImages(images))
       //  this.props.usersImages(images)
       
       }
