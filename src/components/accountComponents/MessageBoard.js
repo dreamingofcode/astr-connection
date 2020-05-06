@@ -11,7 +11,7 @@ const MessageBoard = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    fetch(`http://localhost:3000/api/v1/chat_rooms/${userData.id}`)
+    fetch(`https://astro-connection.herokuapp.com/api/v1/chat_rooms/${userData.id}`)
       .then((resp) => resp.json())
       .then((data) => {
         console.log('chatrooms', data);

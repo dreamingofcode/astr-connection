@@ -36,7 +36,7 @@ class AccountDetails extends Component {
     if (this.props.userData.posts) {
       let images = [];
       this.props.userData.posts.map((post) => {
-        fetch(`http://localhost:3000/images/${post.id}`)
+        fetch(`https://astro-connection.herokuapp.com/images/${post.id}`)
           .then((resp) => resp.json())
           .then((data) => {
             console.log('image render', data);
@@ -50,7 +50,11 @@ class AccountDetails extends Component {
     let imageButton;
     const { userData, userImage } = this.props;
     {
+<<<<<<< HEAD
       if (userData.posts) {
+=======
+      if (userData.posts.length ===0) {
+>>>>>>> a9ef5bcf9eb9f9c61e05b8d45e057b922c650166
         imageButton = 'Upload Image!';
       } else  {
         imageButton = 'Edit Images!';

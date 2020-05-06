@@ -31,7 +31,7 @@ const AccountChat = ({ location }) => {
   useEffect(() => {
     if (!isLoading) {
 
-      fetch(`http://localhost:3000/api/v1/messages/${currentChatRoom.id}`)
+      fetch(`https://astro-connection.herokuapp.com/api/v1/messages/${currentChatRoom.id}`)
         .then((resp) => resp.json())
         .then((data) => {
           console.log('we got messages', data);
@@ -100,7 +100,7 @@ const AccountChat = ({ location }) => {
     //     },
     //   }),
     // };
-    // fetch(`http://localhost:3000/api/v1/messages`, config)
+    // fetch(`https://astro-connection.herokuapp.com/api/v1/messages`, config)
     //   .then((resp) => resp.json())
     //   .then((data) => {
     //     console.log('newmessage', data);

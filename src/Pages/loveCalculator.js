@@ -74,9 +74,7 @@ class loveCalculator extends React.Component {
           <div className="row my-container">
             <div className="col-12 ">
               <h1>Please Select Your Horosocope!</h1>
-  
-         
-      
+
 
               <ZodiacSlider
                 zodiacProperties={zodiacProperties}

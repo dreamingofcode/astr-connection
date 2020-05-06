@@ -44,7 +44,7 @@ const UserPage = (props) => {
         currentlyViewing.zodiac.toLowerCase();
       let match_id = matchMaker(match);
 
-      fetch(`http://localhost:3000/api/v1/zodiac_matches/${match_id}`)
+      fetch(`https://astro-connection.herokuapp.com/api/v1/zodiac_matches/${match_id}`)
         .then((resp) => resp.json())
         .then((data) => {
           dispatch({ type: 'FETCH_USER_ZODIAC!' });

@@ -5,6 +5,7 @@ import { List, ListItem } from 'material-ui/List';
 import RaisedButton from 'material-ui/RaisedButton';
 import { connect } from 'react-redux';
 import logo from '../../assets/images/logo.png';
+import { config } from 'react-transition-group';
 class UserConfirmForm extends Component {
   continue = (event) => {
     //PROCESS-FORM//
@@ -18,11 +19,10 @@ class UserConfirmForm extends Component {
     this.props.prevStep();
   };
   handleDelete = () => {
-    const { userData } = this.props;
-    fetch(`http://localhost:3000/api/v1/users/${userData.id}`, {
-      method: 'DELETE',
-    })
-      .then((resp) => resp.json())
+const configObj = {method: "DELETE"}
+console.log("dd",this.props.userData.id)
+    fetch(`https://astro-connection.herokuapp.com/api/v1/users/${this.props.userData.id}`,configObj)
+      .then(resp => resp.json())
       .then((data) => {
         console.log('delete', data);
         this.props.history.push('/');
