@@ -27,7 +27,7 @@ class SignUpForm extends Component {
   componentDidMount() {
     const token = localStorage.token;
     const { userData, isLoading } = this.props;
-    console.log("f",this.state.zodiac)
+   
     if (token) {
       //seems like userdata comes back too late to access the if statement! component mounts before the states uodate
 
@@ -76,6 +76,8 @@ class SignUpForm extends Component {
       const month = birthDate.split('-')[1];
       const day = birthDate.split('-')[2];
       if ((month === '03' && day > '20') || (month === '04' && day < '21')) {
+        console.log("we mad",this.state)
+
         this.setState({
           zodiac: 'Aries',
         });
@@ -83,6 +85,7 @@ class SignUpForm extends Component {
         (month === '04' && day > '20') ||
         (month === '05' && day < '21')
       ) {
+        console.log("we mad",this.state)
         this.setState({
           zodiac: 'Taurus',
         });
@@ -90,6 +93,7 @@ class SignUpForm extends Component {
         (month === '05' && day > '20') ||
         (month === '06' && day < '21')
       ) {
+        console.log("we mad",this.state)
         this.setState({
           zodiac: 'Gemini',
         });
@@ -97,6 +101,7 @@ class SignUpForm extends Component {
         (month === '06' && day > '20') ||
         (month === '07' && day < '23')
       ) {
+        console.log("we mad",this.state)
         this.setState({
           zodiac: 'Cancer',
         });
@@ -104,6 +109,7 @@ class SignUpForm extends Component {
         (month === '07' && day > '22') ||
         (month === '08' && day < '23')
       ) {
+        console.log("we mad",this.state)
         this.setState({
           zodiac: 'Leo',
         });
@@ -111,6 +117,7 @@ class SignUpForm extends Component {
         (month === '08' && day > '22') ||
         (month === '09' && day < '23')
       ) {
+        console.log("we mad",this.state)
         this.setState({
           zodiac: 'Virgo',
         });
@@ -118,6 +125,7 @@ class SignUpForm extends Component {
         (month === '09' && day > '22') ||
         (month === '10' && day < '23')
       ) {
+        console.log("we mad",this.state)
         this.setState({
           zodiac: 'Libra',
         });
@@ -125,6 +133,7 @@ class SignUpForm extends Component {
         (month === '10' && day > '22') ||
         (month === '11' && day < '23')
       ) {
+        console.log("we mad",this.state)
         this.setState({
           zodiac: 'Scorpio',
         });
@@ -132,6 +141,7 @@ class SignUpForm extends Component {
         (month === '11' && day > '22') ||
         (month === '12' && day < '22')
       ) {
+        console.log("we mad",this.state)
         this.setState({
           zodiac: 'Sagittarius',
         });
@@ -139,6 +149,7 @@ class SignUpForm extends Component {
         (month === '12' && day > '22') ||
         (month === '01' && day < '20')
       ) {
+        console.log("we mad",this.state)
         this.setState({
           zodiac: 'Capricorn',
         });
@@ -146,6 +157,7 @@ class SignUpForm extends Component {
         (month === '01' && day > '19') ||
         (month === '02' && day < '20')
       ) {
+        console.log("we mad",this.state)
         this.setState({
           zodiac: 'Aquarius',
         });
@@ -153,10 +165,12 @@ class SignUpForm extends Component {
         (month === '02' && day > '19') ||
         (month === '03' && day < '21')
       ) {
+        console.log("we mad",this.state)
         this.setState({
           zodiac: 'Pisces',
         });
       }
+      console.log("we mad",this.state)
     }
     console.log("we made it 2",this.state.zodiac)
 
