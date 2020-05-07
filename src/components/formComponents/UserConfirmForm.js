@@ -24,9 +24,9 @@ console.log("dd",this.props.userData.id)
     fetch(`https://astro-connection.herokuapp.com/api/v1/users/${this.props.userData.id}`,configObj)
       .then(resp => resp.json())
       .then((data) => {
-        console.log('delete', data);
-        this.props.history.push('/');
+       
         localStorage.clear();
+        this.props.history.push('/');
       });
   };
 

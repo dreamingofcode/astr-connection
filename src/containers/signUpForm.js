@@ -18,7 +18,7 @@ class SignUpForm extends Component {
     birthDate: '',
     gender: '',
     sexualOrientation: '',
-    zodiac: '',
+    zodiac: "pisces",
     password_confirmation: '',
     age: '',
     profile_image: 'Please upload Image',
@@ -27,6 +27,7 @@ class SignUpForm extends Component {
   componentDidMount() {
     const token = localStorage.token;
     const { userData, isLoading } = this.props;
+    console.log("f",this.state.zodiac)
     if (token) {
       //seems like userdata comes back too late to access the if statement! component mounts before the states uodate
 
@@ -49,6 +50,7 @@ class SignUpForm extends Component {
   ////function to determine your age and make sure your older than 18
   handleAge = () => {
     if (this.state.birthDate) {
+      console.log("f",this.state.zodiac)
       const today = new Date();
       var birthDates = new Date(this.state.birthDate);
       var age = today.getFullYear() - birthDates.getFullYear();
