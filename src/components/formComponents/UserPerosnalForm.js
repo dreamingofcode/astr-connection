@@ -10,16 +10,17 @@ import logo from '../../assets/images/logo.png';
 class UserPersonalForm extends Component {
   continue = (event) => {
     event.preventDefault();
-    // this.props.nextStep();
-    this.props.handleZodiac();
-    this.props.handleAge()
+     this.props.nextStep();
+     this.props.handleBoth()
+    //this.props.handleZodiac();
+    //this.props.handleAge()
   };
   back = (event) => {
     event.preventDefault();
     this.props.prevStep();
   };
   render() {
-    const { values, handleChange ,handleAge} = this.props;
+    const { values, handleChange, handleAge, handleBoth} = this.props;
     const token = localStorage.token;
 
     return (
@@ -28,7 +29,7 @@ class UserPersonalForm extends Component {
           <img src={logo} alt="logo" height="170px" />
           {token ? <h1>Edit Form</h1> : <h1>Sign-up Form</h1>}
           <div className="date-form">
-            <DateForm handleChange={handleChange} values={values} />
+            <DateForm handleChange={handleChange}  handleAge={handleAge} values={values} />
           </div>
           <GenderForm handleChange={handleChange} values={values} />
           <SexualOForm handleChange={handleChange} values={values} />

@@ -24,14 +24,7 @@ class UserPgDailyReading extends Component{
     
             this.props.getProfileDetails(data)
         })
-    //     fetch(`http://localhost:3000/posts/${this.props.userData.id}`)
-    //    .then((resp) => resp.json())
-    //    .then((data) => {
-    //      if (!data.error) {
-    //        console.log('we got image', data);
-    //        this.props.getProfileDetails(data);
-    //      }
-    //    });
+  
     
     }
     render(){

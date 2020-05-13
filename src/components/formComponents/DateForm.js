@@ -25,6 +25,7 @@ export default function DatePickers(props) {
         type="date"
         className={classes.textField}
         onChange={props.handleChange('birthDate')}
+        // onSubmit={props.handleAge()}
         defaultValue={props.values.birthDate}
         InputLabelProps={{
           shrink: true,
