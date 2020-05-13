@@ -33,7 +33,7 @@ class AccountDetails extends Component {
   };
 
   componentDidMount() {
-    if (this.props.userData) {
+    if (this.props.userData.posts) {
       let images = [];
       this.props.userData.posts.map((post) => {
         fetch(`https://astro-connection.herokuapp.com/images/${post.id}`)
@@ -50,7 +50,7 @@ class AccountDetails extends Component {
     let imageButton;
     const { userData, userImage } = this.props;
     {
-      if (userData.posts.length ===0) {
+      if (userData.posts) {
         imageButton = 'Upload Image!';
       } else  {
         imageButton = 'Edit Images!';
@@ -58,7 +58,7 @@ class AccountDetails extends Component {
     }
     return (
       <React.Fragment>
-        {userData.posts.length>0 ? (
+        {userData.posts && userData.posts.length>0 ? (
           userData.profile_image?
           <img
           src={userData.profile_image}

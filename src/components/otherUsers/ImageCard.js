@@ -12,7 +12,7 @@ const ImageCard = ({ image }) => {
         <section>
           <h4>{caption}</h4>
         </section>
-        <p> </p>
+        <br/>
       </div>
     </div>
   );
