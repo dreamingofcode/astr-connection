@@ -40,6 +40,8 @@ console.log("dd",this.props.userData.id)
         birthDate,
         gender,
         sexualOrientation,
+        age,
+        zodiac
       },
       handleChange,
     } = this.props;
@@ -54,7 +56,9 @@ console.log("dd",this.props.userData.id)
               <ListItem primaryText="Name" secondaryText={name} />
               <ListItem primaryText="Email" secondaryText={email} />
               <ListItem primaryText="Password" secondaryText={password} />
-              <ListItem primaryText="Birth-date" secondaryText={birthDate} />
+              <ListItem primaryText="Birth-Date" secondaryText={birthDate} />
+              <ListItem primaryText="Age" secondaryText={age} />
+              <ListItem primaryText="Zodiac" secondaryText={zodiac} />
               <ListItem primaryText="Gender" secondaryText={gender} />
 
               <ListItem

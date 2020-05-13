@@ -37,7 +37,7 @@ class SignUpForm extends Component {
           email: userData.email,
           password: userData.password,
           password_confirmation: userData.password,
-          zodiac: userData.zodiac,
+          // zodiac: userData.zodiac,
           bio: userData.bio,
           birthDate: userData.birthDate,
           gender: userData.gender,
@@ -205,6 +205,8 @@ class SignUpForm extends Component {
       birthDate,
       gender,
       sexualOrientation,
+      age,
+      zodiac
     } = this.state;
     const values = {
       name,
@@ -215,6 +217,8 @@ class SignUpForm extends Component {
       birthDate,
       gender,
       sexualOrientation,
+      age,
+      zodiac
     };
     switch (step) {
       case 1:
