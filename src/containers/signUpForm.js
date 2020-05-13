@@ -18,7 +18,7 @@ class SignUpForm extends Component {
     birthDate: '',
     gender: '',
     sexualOrientation: '',
-    zodiac: "pisces",
+    zodiac: "",
     password_confirmation: '',
     age: '',
     profile_image: 'Please upload Image',
@@ -37,7 +37,7 @@ class SignUpForm extends Component {
           email: userData.email,
           password: userData.password,
           password_confirmation: userData.password,
-          zodiac: userData.zodiac,
+          // zodiac: userData.zodiac,
           bio: userData.bio,
           birthDate: userData.birthDate,
           gender: userData.gender,
@@ -50,7 +50,7 @@ class SignUpForm extends Component {
   ////function to determine your age and make sure your older than 18
   handleAge = () => {
     if (this.state.birthDate) {
-      console.log("f",this.state.zodiac)
+      console.log("f")
       const today = new Date();
       var birthDates = new Date(this.state.birthDate);
       var age = today.getFullYear() - birthDates.getFullYear();
@@ -66,9 +66,14 @@ class SignUpForm extends Component {
           age: age,
        
         });
-      }
+      } 
     }
+/// third funciton should set state fro ag eand zodiac.
   };
+  handleBoth=()=>{
+    this.handleAge()
+    this.handleZodiac()
+  }
   handleZodiac = () => {
     if (this.state.birthDate) {
       const { birthDate } = this.state;
@@ -78,7 +83,6 @@ class SignUpForm extends Component {
 
       if ((month === '03' && day > '20') || (month === '04' && day < '21')) {
         console.log("we mad","aries")
-
         this.setState({
           zodiac: 'Aries',
         });
@@ -174,15 +178,15 @@ class SignUpForm extends Component {
       console.log("we made it 1",this.state.zodiac)
     }
     console.log("we made it 2",this.state.zodiac)
-
   };
   nextStep = () => {
+    
     const { step } = this.state;
     this.setState({
       ...this.state,
       step: step + 1,
     });
-  };
+   };
   prevStep = () => {
     const { step } = this.state;
     this.setState({
@@ -205,6 +209,8 @@ class SignUpForm extends Component {
       birthDate,
       gender,
       sexualOrientation,
+      age,
+      zodiac
     } = this.state;
     const values = {
       name,
@@ -215,6 +221,8 @@ class SignUpForm extends Component {
       birthDate,
       gender,
       sexualOrientation,
+      age,
+      zodiac
     };
     switch (step) {
       case 1:
@@ -232,6 +240,7 @@ class SignUpForm extends Component {
             prevStep={this.prevStep}
             handleChange={this.handleChange}
             values={values}
+            handleBoth={this.handleBoth}
             handleZodiac={this.handleZodiac}
             handleAge={this.handleAge}
           />

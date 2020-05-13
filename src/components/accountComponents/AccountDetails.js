@@ -62,7 +62,7 @@ class AccountDetails extends Component {
           userData.profile_image?
           <img
           src={userData.profile_image}
-          alt="user's acount Image"
+          alt="user's acount Image!"
           height="150px"
           style={{ transform: 'rotate(90deg)' }}
           className="round-img"

@@ -17,21 +17,14 @@ const Styles = styled.div`
 class UserPgDailyReading extends Component{
  
     componentDidMount(){
-        fetch(`http://sandipbgt.com/theastrologer/api/horoscope/pisces/today`)
+        fetch(`https://sandipbgt.com/theastrologer/api/horoscope/pisces/today`)
         // ${this.props.userData.zodiac.toLowerCase()}
         .then(resp=>resp.json())
         .then(data=>{
     
             this.props.getProfileDetails(data)
         })
-    //     fetch(`http://localhost:3000/posts/${this.props.userData.id}`)
-    //    .then((resp) => resp.json())
-    //    .then((data) => {
-    //      if (!data.error) {
-    //        console.log('we got image', data);
-    //        this.props.getProfileDetails(data);
-    //      }
-    //    });
+  
     
     }
     render(){

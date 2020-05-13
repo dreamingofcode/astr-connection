@@ -20,7 +20,6 @@ class UserConfirmForm extends Component {
   };
   handleDelete = () => {
 const configObj = {method: "DELETE"}
-console.log("dd",this.props.userData.id)
     fetch(`https://astro-connection.herokuapp.com/api/v1/users/${this.props.userData.id}`,configObj)
       .then(resp => resp.json())
       .then((data) => {
@@ -40,6 +39,8 @@ console.log("dd",this.props.userData.id)
         birthDate,
         gender,
         sexualOrientation,
+        age,
+        zodiac
       },
       handleChange,
     } = this.props;
@@ -54,7 +55,9 @@ console.log("dd",this.props.userData.id)
               <ListItem primaryText="Name" secondaryText={name} />
               <ListItem primaryText="Email" secondaryText={email} />
               <ListItem primaryText="Password" secondaryText={password} />
-              <ListItem primaryText="Birth-date" secondaryText={birthDate} />
+              <ListItem primaryText="Birth-Date" secondaryText={birthDate} />
+              <ListItem primaryText="Age" secondaryText={age} />
+              <ListItem primaryText="Zodiac" secondaryText={zodiac} />
               <ListItem primaryText="Gender" secondaryText={gender} />
 
               <ListItem

@@ -8,6 +8,20 @@ const ImagesCard = ({ image }) => {
   const userData = useSelector((state) => state.userData);
 
   function handleDelete() {
+    if (image.image_url===userData.profile_image){
+      const config = {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+        Accept: 'application/json',
+      },
+      body: JSON.stringify({
+        user: { ...userData, profile_image:'' },
+      }),
+    };
+      fetch(`https://astro-connection.herokuapp.com/api/v1/users/${userData.id}`, config)
+      .then((resp) => resp.json())
+    }
     console.log('biit');
     fetch(`https://astro-connection.herokuapp.com/posts/${image.id}`, { method: 'DELETE' })
       .then((resp) => resp.json())
