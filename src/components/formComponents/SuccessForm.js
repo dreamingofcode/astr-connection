@@ -7,10 +7,13 @@ import RaisedButton from 'material-ui/RaisedButton';
 
 import logo from '../../assets/images/logo.png';
 class SuccessForm extends Component {
+  state = {
+    successful: false,
+  };
   componentDidMount() {
     const token = localStorage.token;
-    const { userData ,newUserData} = this.props;
-delete newUserData["step"]
+    const { userData, newUserData } = this.props;
+    delete newUserData['step'];
 
     if (userData) {
       const configObj = {
@@ -23,7 +26,10 @@ delete newUserData["step"]
           user: newUserData,
         }),
       };
-      fetch(`https://astro-connection.herokuapp.com/api/v1/users/${userData.id}`, configObj)
+      fetch(
+        `https://astro-connection.herokuapp.com/api/v1/users/${userData.id}`,
+        configObj
+      )
         .then((resp) => resp.json())
         .then((data) => {
           console.log('newupdaTTTT', data);
@@ -43,6 +49,13 @@ delete newUserData["step"]
         .then((resp) => resp.json())
         .then((data) => {
           console.log('newUSERRR', data);
+          if (data.error) {
+            alert(data.error);
+          } else {
+            this.setState({
+              successful: true,
+            });
+          }
         });
     }
   }
@@ -61,7 +74,7 @@ delete newUserData["step"]
   };
 
   render() {
-    console.log("new user user data", this.props.newUserData)
+    console.log('new user user data', this.props.newUserData);
     const token = localStorage.token;
     return (
       <MuiThemeProvider>
@@ -69,10 +82,16 @@ delete newUserData["step"]
           <img src={logo} alt="logo" height="170px" />
           {token ? (
             <h1>Your Account Was Successfully UPDATED!</h1>
+          ) : this.state.successful ? (
+            <div>
+              {' '}
+              <h1>Your Account was Successfully Created!</h1>
+              <h2>Your Horoscope: {this.props.newUserData.zodiac}</h2>
+            </div>
           ) : (
-            <h1>Your Account was Successfully Created!</h1>
+            <h1>Your Account Was Not Created!</h1>
           )}
-          <h2>Your Horoscope: {this.props.newUserData.zodiac}</h2>
+
           <RaisedButton
             label="Continue!"
             primary={true}
@@ -81,7 +100,7 @@ delete newUserData["step"]
           />
 
           <div className="user-form"></div>
-        </div >
+        </div>
       </MuiThemeProvider>
     );
   }
