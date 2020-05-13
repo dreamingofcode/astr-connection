@@ -18,7 +18,7 @@ class SignUpForm extends Component {
     birthDate: '',
     gender: '',
     sexualOrientation: '',
-    zodiac: "pisces",
+    zodiac: "",
     password_confirmation: '',
     age: '',
     profile_image: 'Please upload Image',
@@ -78,7 +78,6 @@ class SignUpForm extends Component {
 
       if ((month === '03' && day > '20') || (month === '04' && day < '21')) {
         console.log("we mad","aries")
-
         this.setState({
           zodiac: 'Aries',
         });

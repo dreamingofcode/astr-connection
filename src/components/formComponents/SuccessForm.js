@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-
+import warningIcon from '../../icons/error.jpg';
 import RaisedButton from 'material-ui/RaisedButton';
 
 import logo from '../../assets/images/logo.png';
@@ -89,7 +89,15 @@ class SuccessForm extends Component {
               <h2>Your Horoscope: {this.props.newUserData.zodiac}</h2>
             </div>
           ) : (
-            <h1>Your Account Was Not Created!</h1>
+            <div>
+              <img
+                src={warningIcon}
+                alt="failed to create account"
+                height="200px"
+                className="error"
+              />
+              <h1>Your Account Was Not Created!</h1>
+            </div>
           )}
 
           <RaisedButton

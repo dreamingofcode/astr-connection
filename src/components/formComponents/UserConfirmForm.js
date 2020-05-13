@@ -20,7 +20,6 @@ class UserConfirmForm extends Component {
   };
   handleDelete = () => {
 const configObj = {method: "DELETE"}
-console.log("dd",this.props.userData.id)
     fetch(`https://astro-connection.herokuapp.com/api/v1/users/${this.props.userData.id}`,configObj)
       .then(resp => resp.json())
       .then((data) => {
