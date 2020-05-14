@@ -21,7 +21,7 @@ const Chat = ({ location }) => { //LOCATION is basically the url present
   const [message, setMessage] = useState('');
   const [messages, setMessages] = useState([]);
 
-  const ENDPOINT = 'localhost:5000'; //https://project-chat-application.herokuapp.com/
+  const ENDPOINT = 'localhost:5000'; /// //https://project-chat-application.herokuapp.com/
   const currentChatRoom = useSelector((state) => state.currentChatRoom);
   const createChatRoom = useSelector((state) => state.createChatRoom);
   const userData = useSelector((state) => state.userData);
