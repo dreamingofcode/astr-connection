@@ -58,7 +58,8 @@ class horoscopeDiscover extends React.Component {
     return (
       <div className="my-container">
       <MuiThemeProvider>
-        <div className=" ">
+        <div className="my-container ">
+         <br/> <h1>Get your General Horoscope Reading Below </h1>
           <RaisedButton
             label=" Next"
             primary={true}

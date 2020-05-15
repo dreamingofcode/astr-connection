@@ -42,14 +42,13 @@ class Home extends React.Component {
             <br />
             <h6>
               Check out your general horoscope reading and begin to understand
-              who you truelly are! Find out the qualities which inherentaly make
-              you or break you!. Learn to understand your strengths and
-              weaknessess with our in-depth descriptions wrtitten by prestine
-              figures in the field of astrology!{' '}
+              who you truelly are! Find out the qualities which inherently make
+              you or break you! Learn to understand your strengths and
+              weaknessess with our in-depth descriptions!{' '}
             </h6>
 
             <Link className="Link" to="/horoscope-discover-page">
-              <Button>Read Daily Horoscope!</Button>
+              <Button>General Horoscope Reading!</Button>
             </Link>
 
             <br />
