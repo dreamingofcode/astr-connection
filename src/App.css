@@ -246,7 +246,7 @@ display: inline-flex;
 .my-container {
   /* for other user's page */
   margin-top: -45px;
-  /* width: 100%; */
+  width: 100%;
   background-color: rgb(106, 206, 206);
  
 }
