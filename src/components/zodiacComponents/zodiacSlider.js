@@ -36,7 +36,7 @@ class zodiacSlider extends React.Component {
               disabled={property.index === 0}
             />
 
-            <div className="my-roww">
+            <div className="row ">
               <div className="col">
                 <div className={`cards-slider active-slide-${property.index}`}>
                   <div
