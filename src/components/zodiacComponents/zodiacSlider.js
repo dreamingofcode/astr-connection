@@ -18,7 +18,7 @@ class zodiacSlider extends React.Component {
     } = this.props;
 
     return (
-      <div className="my-container ">
+      <div className="container ">
         <MuiThemeProvider>
           <div className="slider1 ">
             <RaisedButton
@@ -36,7 +36,7 @@ class zodiacSlider extends React.Component {
               disabled={property.index === 0}
             />
 
-            <div className="row my-roww">
+            <div className="my-roww">
               <div className="col">
                 <div className={`cards-slider active-slide-${property.index}`}>
                   <div
