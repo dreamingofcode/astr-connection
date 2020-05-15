@@ -56,7 +56,7 @@ class horoscopeDiscover extends React.Component {
     } = property;
 
     return (
-      <div className="container">
+      <div className="my-container ">
       <MuiThemeProvider>
         <div className="my-container ">
           <RaisedButton
