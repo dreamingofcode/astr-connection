@@ -58,7 +58,7 @@ class horoscopeDiscover extends React.Component {
     return (
       <div className="my-container">
       <MuiThemeProvider>
-        <div className="my-container ">
+        <div className="">
          <br/> <h1>Get your General Horoscope Reading Below </h1>
           <RaisedButton
             label=" Next"
@@ -74,7 +74,7 @@ class horoscopeDiscover extends React.Component {
             onClick={() => this.prevProperty()}
             disabled={property.index === 0}
           />
-<div className="">
+<div className=""><br/><br/>
           <div className="my-roww  my-container">
             <div className="col">
               <div className={`cards-slider active-slide-${property.index}`}>

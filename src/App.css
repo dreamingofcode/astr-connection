@@ -261,6 +261,7 @@ display: inline-flex;
 .my-roww{
   height:435px;
   /* margin-top:30px; */
+  /* align-content: center; */
   background-image: url('./assets/images/lovematch5.jpeg') ;
   background-repeat: no-repeat;
   background-size: 100%;
