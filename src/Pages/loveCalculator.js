@@ -69,7 +69,7 @@ class loveCalculator extends React.Component {
     const { zodiacProperties, property, property2 } = this.state;
 
     return (
-      <div className="my-container">
+      <div className="container">
         <MuiThemeProvider>
           <div className="row my-container">
             <div className="col-12 ">
