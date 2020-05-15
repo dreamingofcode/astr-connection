@@ -1,7 +1,7 @@
 import React from 'react';
 import ZodiacSlider from '../components/zodiacComponents/zodiacSlider';
 import zodiacData from '../components/zodiacComponents/zodiacData';
-import {matchMaker} from '../components/zodiacComponents/matchMaker'
+import { matchMaker } from '../components/zodiacComponents/matchMaker';
 import { connect } from 'react-redux';
 import RaisedButton from 'material-ui/RaisedButton';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
@@ -16,7 +16,7 @@ class loveCalculator extends React.Component {
       property2: zodiacData.properties[0],
 
       userZodiac: zodiacData.properties[0],
-      partnerZodiac: zodiacData.properties[0]
+      partnerZodiac: zodiacData.properties[0],
     };
   }
   nextProperty = () => {
@@ -25,7 +25,7 @@ class loveCalculator extends React.Component {
     // this.props.selectedZodiac(zodiac) tried using store ans reddux
     this.setState({
       property: zodiacData.properties[newIndex],
-      userZodiac: zodiacData.properties[newIndex]
+      userZodiac: zodiacData.properties[newIndex],
     });
   };
   prevProperty = () => {
@@ -33,14 +33,14 @@ class loveCalculator extends React.Component {
     const newIndex = this.state.property.index - 1;
     this.setState({
       property: zodiacData.properties[newIndex],
-      userZodiac: zodiacData.properties[newIndex]
+      userZodiac: zodiacData.properties[newIndex],
     });
   };
   nextProperty2 = () => {
     const newIndex = this.state.property2.index + 1;
     this.setState({
       property2: zodiacData.properties[newIndex],
-      partnerZodiac: zodiacData.properties[newIndex]
+      partnerZodiac: zodiacData.properties[newIndex],
     });
   };
   prevProperty2 = () => {
@@ -48,23 +48,26 @@ class loveCalculator extends React.Component {
     const newIndex = this.state.property2.index - 1;
     this.setState({
       property2: zodiacData.properties[newIndex],
-      partnerZodiac: zodiacData.properties[newIndex]
+      partnerZodiac: zodiacData.properties[newIndex],
     });
   };
-  getReading=()=>{
-   const match = this.state.userZodiac.sign + " " +this.state.partnerZodiac.sign
-   console.log("match", match)
-     let match_id= matchMaker(match)
-  
-    console.log(match_id)
-    fetch(`https://astro-connection.herokuapp.com/api/v1/zodiac_matches/${match_id}`)
-    .then(resp=> resp.json())
-    .then(data=>{
-      console.log("mathDATA",data)
-      this.props.history.push('/horoscope-match-page');
-      this.props.horoscopeMatch(data)
-    })
-  }
+  getReading = () => {
+    const match =
+      this.state.userZodiac.sign + ' ' + this.state.partnerZodiac.sign;
+    console.log('match', match);
+    let match_id = matchMaker(match);
+
+    console.log(match_id);
+    fetch(
+      `https://astro-connection.herokuapp.com/api/v1/zodiac_matches/${match_id}`
+    )
+      .then((resp) => resp.json())
+      .then((data) => {
+        console.log('mathDATA', data);
+        this.props.history.push('/horoscope-match-page');
+        this.props.horoscopeMatch(data);
+      });
+  };
   render() {
     const { zodiacProperties, property, property2 } = this.state;
 
@@ -74,7 +77,7 @@ class loveCalculator extends React.Component {
           <div className="row my-container">
             <div className="col-12 ">
               <h1>Please Select Your Horosocope!</h1>
-
+              <br /><br/>
 
               <ZodiacSlider
                 zodiacProperties={zodiacProperties}
@@ -87,57 +90,69 @@ class loveCalculator extends React.Component {
               />
             </div>
           </div>
-                <RaisedButton
-                  label="Continue to Get Reading!"
-                  primary={true}
-                  style={styles.button1}
-                  onClick={this.getReading}
-                > <h2>Continue to Get Reading!</h2></RaisedButton>
-              </MuiThemeProvider>
-          <div className="row my-row1 my-container">
-            <div className="col my-col2 left">
-              <h1>
-                {property.sign.charAt(0).toUpperCase() + property.sign.slice(1)}
-              </h1>
-              <img className="round-img" src={property.ElPicture} width="100px" height="100px" />
-            </div>
-            <h1>+</h1>
-            <div className="col my-col2 right">
-              <h1>
-                {property2.sign.charAt(0).toUpperCase() +
-                  property2.sign.slice(1)}
-              </h1>
-              <img className="round-img" src={property2.ElPicture} width="100px" height="100px" />
-            </div>
-            <br />
+          <RaisedButton
+            label="Continue to Get Reading!"
+            primary={true}
+            style={styles.button1}
+            onClick={this.getReading}
+          >
+            {' '}
+            <h2>Continue to Get Reading!</h2>
+          </RaisedButton>
+        </MuiThemeProvider>
+        <div className="row my-row1 my-container">
+          <div className="col my-col2 left">
+            <h1>
+              {property.sign.charAt(0).toUpperCase() + property.sign.slice(1)}
+            </h1>
+            <img
+              className="round-img"
+              src={property.ElPicture}
+              width="100px"
+              height="100px"
+            />
           </div>
+          <h1>+</h1>
+          <div className="col my-col2 right">
+            <h1>
+              {property2.sign.charAt(0).toUpperCase() + property2.sign.slice(1)}
+            </h1>
+            <img
+              className="round-img"
+              src={property2.ElPicture}
+              width="100px"
+              height="100px"
+            />
+          </div>
+          <br />
+        </div>
       </div>
     );
   }
 }
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch) => {
   return {
-    horoscopeMatch: match => {
+    horoscopeMatch: (match) => {
       const action = {
         type: 'HOROSCOPE_MATCH',
-        payload:match
+        payload: match,
       };
       dispatch(action);
-    }
+    },
   };
 };
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return {
     selectedZodiac: state.selectedZodiac,
-    zodiacData: state.zodiacData
+    zodiacData: state.zodiacData,
   };
 };
 const styles = {
   button: {
-    margin: 15
+    margin: 15,
   },
   button1: {
-    margin: -0
-  }
+    margin: -0,
+  },
 };
 export default connect(mapStateToProps, mapDispatchToProps)(loveCalculator);

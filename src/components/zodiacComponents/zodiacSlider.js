@@ -18,7 +18,7 @@ class zodiacSlider extends React.Component {
     } = this.props;
 
     return (
-      <div className="container ">
+      <div className="my-container ">
         <MuiThemeProvider>
           <div className="slider1 ">
             <RaisedButton
