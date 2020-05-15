@@ -260,7 +260,7 @@ display: inline-flex;
 
 .my-roww{
   height:435px;
-  margin-top:30px;
+  /* margin-top:30px; */
   background-image: url('./assets/images/lovematch5.jpeg') ;
   background-repeat: no-repeat;
   background-size: 100%;
@@ -271,7 +271,7 @@ display: inline-flex;
   /* height: 600px; */
   overflow-x: hidden;
   overflow-y: hidden;
-  display: inline-block;
+  /* display: inline-block; */
 }
 .my-roww2{
   /* for imageslider */
