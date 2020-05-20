@@ -101,7 +101,7 @@ class horoscopeDiscover extends React.Component {
               </h1>
               <img className="round-img" src={picture} height="200px" width="200px" />
               <br />
-              <img  className="round-img" src={ElPicture} alt="element" height="90px" width="90px" />
+              <img  src={ElPicture} alt="element" height="90px" width="90px" />
               <h3>Quality:{Quality}</h3>
               <br />
               <h3>Color:{Color}</h3>

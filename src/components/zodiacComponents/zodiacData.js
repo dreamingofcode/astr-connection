@@ -11,8 +11,8 @@ import scorpio from '../../assets/images/zodiacs/scorpio.jpg';
 import taurus from '../../assets/images/zodiacs/taurus.jpg';
 import Virgo from '../../assets/images/zodiacs/virgo.jpg';
 import earth2 from '../../assets/images/zodiacs/earth2.jpeg';
-import water from '../../assets/images/zodiacs/water.jpeg';
-import fire from '../../assets/images/zodiacs/fire.jpeg';
+import water2 from '../../assets/images/zodiacs/waterElement.svg';
+import fire from '../../assets/images/zodiacs/fireElement.svg';
 import air from '../../assets/images/zodiacs/air.png';
 import venus from '../../assets/images/zodiacs/venus.jpeg'
 import neptune from '../../assets/images/zodiacs/neptune.jpg'
@@ -120,7 +120,7 @@ const zodiacData = {
       sign: 'cancer',
       picture: cancer,
       Element: 'Water',
-      ElPicture: water,
+      ElPicture: water2,
       Quality: 'Cardinal',
       Color: 'White',
       Day: 'Monday, Thursday',
@@ -236,7 +236,7 @@ const zodiacData = {
       sign: 'scorpio',
       picture: scorpio,
       Element: 'Water',
-      ElPicture: water,
+      ElPicture: water2,
 
       Quality: 'Fixed',
       Color: 'Scarlet, Red, Rust',
@@ -355,7 +355,7 @@ const zodiacData = {
       sign: 'pisces',
       picture: pisces,
       Element: 'Water',
-      ElPicture: water,
+      ElPicture: water2,
       Quality: 'Mutable',
       Color: 'Mauve, Lilac, Purple, Violet, Sea green',
       Day: 'Thursday',
