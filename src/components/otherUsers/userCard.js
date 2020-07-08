@@ -27,7 +27,7 @@ const UserCard = ({ user, data }) => {
           src={user.profile_image}
           alt="user image"
           height="200px"
-          style={{ transform: 'rotate(90deg)' }}
+          // style={{ transform: 'rotate(90deg)' }}
         />)
    :profileImage = (
       <img
@@ -35,7 +35,7 @@ const UserCard = ({ user, data }) => {
         src={user.posts[0].image_url}
         alt="user image"
         height="200px"
-        style={{ transform: 'rotate(90deg)' }}
+        // style={{ transform: 'rotate(90deg)' }}
       />
     )
     

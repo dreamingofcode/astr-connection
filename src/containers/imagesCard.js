@@ -65,7 +65,7 @@ const ImagesCard = ({ image }) => {
         alt={image.caption}
         height="150px"
         width="200px"
-        style={{ transform: 'rotate(90deg)' }}
+        // style={{ transform: 'rotate(90deg)' }}
       />
       <br />
       <div className="details">
