@@ -61,7 +61,7 @@ const UserPage = (props) => {
           src={currentlyViewing.posts[0].image_url}
           alt="user image"
           height="200px"
-          style={{ transform: 'rotate(90deg)' }}
+          // style={{ transform: 'rotate(90deg)' }}
         />
       );
     } else {

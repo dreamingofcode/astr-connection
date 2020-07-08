@@ -6,7 +6,7 @@ const ImageCard = ({ image }) => {
   return (
     <div id={`card-${index}`} className="card/">
     
-      <img src={image_url} alt={id} height="300px" width="300px" style={{ transform: 'rotate(90deg)' }}/>
+      <img src={image_url} alt={id} height="300px" width="300px" />
       <br />
       <div className="details">
         <section>
