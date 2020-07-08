@@ -21,7 +21,7 @@ const AccountChat = ({ location }) => {
   const [users, setUsers] = useState('');
   const [message, setMessage] = useState('');
   const [messages, setMessages] = useState([]); //what i will use to set messages from backend
-  const ENDPOINT = 'localhost:5000'; //https://project-chat-application.herokuapp.com/
+  const ENDPOINT = "https://project-chat-application.herokuapp.com/" //'localhost:5000'; //
   const currentChatRoom = useSelector((state) => state.currentChatRoom);
   const createChatRoom = useSelector((state) => state.createChatRoom);
   const currentlyViewing = useSelector((state) => state.currentlyViewing);
