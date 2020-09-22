@@ -4,11 +4,11 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import 'bootstrap/dist/css/bootstrap.css';
-import { createStore, applyMiddleware } from 'redux';
+import { createStore, applyMiddleware,compose } from 'redux';
 import allReducers from './reducers/index'
 import { Provider } from 'react-redux';
 import thunk from 'redux-thunk'
-const composeElements= window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
+const composeElements= window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
 const store = createStore(
   allReducers,
  composeElements(applyMiddleware(thunk))

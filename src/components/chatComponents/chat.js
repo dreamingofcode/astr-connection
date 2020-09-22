@@ -44,7 +44,7 @@ const Chat = ({ location }) => { //LOCATION is basically the url present
             },
           }),
         };
-        fetch(`https://astro-connection.herokuapp.com/api/v1/chat_rooms`, reObj)
+        fetch(`https://localhost:3000/api/v1/chat_rooms`, reObj)
           .then((resp) => resp.json())
           .then((data) => {
           
