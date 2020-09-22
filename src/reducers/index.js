@@ -1,4 +1,4 @@
-
+import {combineReducers} from 'redux'
 import newUserData from './newUserData'
 import userAuth from './userAuth'
 import userData from './userData'
