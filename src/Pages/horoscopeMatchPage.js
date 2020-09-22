@@ -45,7 +45,7 @@ class horoscopeMatchPage extends React.Component {
           <div>
             {compImage(horoscopeMatch)}
           <h1>
-            Welcome to Your Horoascope Match Reading, Select Tabs to read!
+            Welcome to Your Horoscope Match Reading, Select Tabs to read!
           </h1></div>
         ) : null}
         {this.state.tab === 'general' ? (

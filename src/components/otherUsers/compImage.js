@@ -30,5 +30,5 @@ const compImage = (props) => {
       <br />
     </React.Fragment>
   );
-};
+};.id
 export default compImage;
